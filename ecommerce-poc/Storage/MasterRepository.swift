@@ -1,5 +1,5 @@
 //
-//  Category.swift
+//  MasterRepository.swift
 //  ecommerce-poc
 //
 //  Created by Rugmangathan on 06/07/18.
@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import RxGRDB
-import GRDB
+import RxSwift
 
-class Category: Record {
-
+protocol CachedRepository {
+  func getProducts() -> Observable<FetchEvent<[RemoteCategory]>>
 }

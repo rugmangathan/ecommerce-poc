@@ -19,10 +19,14 @@
 		F4406EFD20EF5CCF00A9E8E5 /* ProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406EFC20EF5CCF00A9E8E5 /* ProductsModel.swift */; };
 		F4406EFF20EF5D8C00A9E8E5 /* ProductsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406EFE20EF5D8C00A9E8E5 /* ProductsState.swift */; };
 		F4406F0120EF614000A9E8E5 /* FetchEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0020EF614000A9E8E5 /* FetchEvent.swift */; };
-		F4406F0620EF61FB00A9E8E5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0520EF61FB00A9E8E5 /* Product.swift */; };
-		F4406F0820EF62FB00A9E8E5 /* Variant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0720EF62FB00A9E8E5 /* Variant.swift */; };
+		F4406F0620EF61FB00A9E8E5 /* RemoteProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0520EF61FB00A9E8E5 /* RemoteProduct.swift */; };
+		F4406F0820EF62FB00A9E8E5 /* RemoteVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0720EF62FB00A9E8E5 /* RemoteVariant.swift */; };
 		F4406F0D20EF77CB00A9E8E5 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0C20EF77CB00A9E8E5 /* ProductsResponse.swift */; };
-		F4406F0F20EF787D00A9E8E5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0E20EF787D00A9E8E5 /* Category.swift */; };
+		F4406F0F20EF787D00A9E8E5 /* RemoteCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0E20EF787D00A9E8E5 /* RemoteCategory.swift */; };
+		F49E96B620EF9186008781F9 /* MasterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96B520EF9186008781F9 /* MasterRepository.swift */; };
+		F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96B720EF92C2008781F9 /* StorageModule.swift */; };
+		F49E96BD20EF99C6008781F9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96BC20EF99C6008781F9 /* Category.swift */; };
+		F49E96C020EFA0EB008781F9 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */; };
 		F4D4B90320EF7D6A007F836E /* CommonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D4B90220EF7D6A007F836E /* CommonApi.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,10 +61,14 @@
 		F4406EFC20EF5CCF00A9E8E5 /* ProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsModel.swift; sourceTree = "<group>"; };
 		F4406EFE20EF5D8C00A9E8E5 /* ProductsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsState.swift; sourceTree = "<group>"; };
 		F4406F0020EF614000A9E8E5 /* FetchEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEvent.swift; sourceTree = "<group>"; };
-		F4406F0520EF61FB00A9E8E5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		F4406F0720EF62FB00A9E8E5 /* Variant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variant.swift; sourceTree = "<group>"; };
+		F4406F0520EF61FB00A9E8E5 /* RemoteProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteProduct.swift; sourceTree = "<group>"; };
+		F4406F0720EF62FB00A9E8E5 /* RemoteVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteVariant.swift; sourceTree = "<group>"; };
 		F4406F0C20EF77CB00A9E8E5 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
-		F4406F0E20EF787D00A9E8E5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		F4406F0E20EF787D00A9E8E5 /* RemoteCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCategory.swift; sourceTree = "<group>"; };
+		F49E96B520EF9186008781F9 /* MasterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterRepository.swift; sourceTree = "<group>"; };
+		F49E96B720EF92C2008781F9 /* StorageModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModule.swift; sourceTree = "<group>"; };
+		F49E96BC20EF99C6008781F9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		F4D4B90220EF7D6A007F836E /* CommonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +135,7 @@
 		F4406ECE20EF4C6900A9E8E5 /* ecommerce-poc */ = {
 			isa = PBXGroup;
 			children = (
+				F49E96AE20EF8E8D008781F9 /* Storage */,
 				F4D4B90120EF7D6A007F836E /* Api */,
 				F4406EF820EF5BE500A9E8E5 /* Common */,
 				F4406EFB20EF5C7400A9E8E5 /* Products */,
@@ -143,6 +152,7 @@
 		F4406EE320EF4C6B00A9E8E5 /* ecommerce-pocTests */ = {
 			isa = PBXGroup;
 			children = (
+				F49E96BB20EF9850008781F9 /* Mock */,
 				F4406EF720EF54D000A9E8E5 /* Products */,
 				F4406EE620EF4C6B00A9E8E5 /* Info.plist */,
 			);
@@ -179,12 +189,30 @@
 		F4406F0420EF61EE00A9E8E5 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				F4406F0E20EF787D00A9E8E5 /* Category.swift */,
-				F4406F0520EF61FB00A9E8E5 /* Product.swift */,
-				F4406F0720EF62FB00A9E8E5 /* Variant.swift */,
+				F4406F0E20EF787D00A9E8E5 /* RemoteCategory.swift */,
+				F4406F0520EF61FB00A9E8E5 /* RemoteProduct.swift */,
+				F4406F0720EF62FB00A9E8E5 /* RemoteVariant.swift */,
 				F4406F0C20EF77CB00A9E8E5 /* ProductsResponse.swift */,
+				F49E96BC20EF99C6008781F9 /* Category.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		F49E96AE20EF8E8D008781F9 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				F49E96B520EF9186008781F9 /* MasterRepository.swift */,
+				F49E96B720EF92C2008781F9 /* StorageModule.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		F49E96BB20EF9850008781F9 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		F4D4B90120EF7D6A007F836E /* Api */ = {
@@ -222,6 +250,7 @@
 			buildConfigurationList = F4406EEC20EF4C6B00A9E8E5 /* Build configuration list for PBXNativeTarget "ecommerce-pocTests" */;
 			buildPhases = (
 				68B19A9ABC91CA2EF11605E1 /* [CP] Check Pods Manifest.lock */,
+				F49E96BE20EFA05B008781F9 /* Cuckoo Mock Generator */,
 				F4406EDC20EF4C6B00A9E8E5 /* Sources */,
 				F4406EDD20EF4C6B00A9E8E5 /* Frameworks */,
 				F4406EDE20EF4C6B00A9E8E5 /* Resources */,
@@ -384,6 +413,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F49E96BE20EFA05B008781F9 /* Cuckoo Mock Generator */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Cuckoo Mock Generator";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/ecommerce-pocTests/Mock/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n${PODS_ROOT}/Cuckoo/run generate --no-header --no-timestamp --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/ecommerce-poc/Api/CommonApi.swift\" \\\n# ... and so forth\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -394,14 +437,17 @@
 				F4406F0D20EF77CB00A9E8E5 /* ProductsResponse.swift in Sources */,
 				F4406ED220EF4C6A00A9E8E5 /* ViewController.swift in Sources */,
 				F4406ED020EF4C6900A9E8E5 /* AppDelegate.swift in Sources */,
+				F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */,
 				F4406EFA20EF5C1D00A9E8E5 /* MviLifecycle.swift in Sources */,
 				F4406F0120EF614000A9E8E5 /* FetchEvent.swift in Sources */,
-				F4406F0F20EF787D00A9E8E5 /* Category.swift in Sources */,
+				F49E96B620EF9186008781F9 /* MasterRepository.swift in Sources */,
+				F4406F0F20EF787D00A9E8E5 /* RemoteCategory.swift in Sources */,
 				F4406EFF20EF5D8C00A9E8E5 /* ProductsState.swift in Sources */,
-				F4406F0820EF62FB00A9E8E5 /* Variant.swift in Sources */,
+				F4406F0820EF62FB00A9E8E5 /* RemoteVariant.swift in Sources */,
 				F4D4B90320EF7D6A007F836E /* CommonApi.swift in Sources */,
 				F4406EFD20EF5CCF00A9E8E5 /* ProductsModel.swift in Sources */,
-				F4406F0620EF61FB00A9E8E5 /* Product.swift in Sources */,
+				F4406F0620EF61FB00A9E8E5 /* RemoteProduct.swift in Sources */,
+				F49E96BD20EF99C6008781F9 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4406EE520EF4C6B00A9E8E5 /* ProductsModelTests.swift in Sources */,
+				F49E96C020EFA0EB008781F9 /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,9 +9,9 @@
 import Foundation
 
 class ProductsResponse: Decodable {
-  let categories: [Category]
+  let categories: [RemoteCategory]
 
-  init(_ categories: [Category]) {
+  init(_ categories: [RemoteCategory]) {
     self.categories = categories
   }
 }

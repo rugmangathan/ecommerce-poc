@@ -1,5 +1,5 @@
 //
-//  Variant.swift
+//  RemoteVariant.swift
 //  ecommerce-poc
 //
 //  Created by Rugmangathan on 06/07/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Variant: Decodable, Equatable {
+class RemoteVariant: Decodable, Equatable {
   let id: Int
   let color: String
   var size: Int?
@@ -42,7 +42,7 @@ class Variant: Decodable, Equatable {
     self.init(id, color, size, price)
   }
 
-  static func == (lhs: Variant, rhs: Variant) -> Bool {
+  static func == (lhs: RemoteVariant, rhs: RemoteVariant) -> Bool {
     return lhs.id == rhs.id
   }
 }

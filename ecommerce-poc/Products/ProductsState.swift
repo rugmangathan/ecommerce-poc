@@ -10,10 +10,10 @@ import Foundation
 
 class ProductsState: Equatable {
   var fetchAction: FetchAction
-  var products: [Product]
+  var products: [RemoteCategory]
 
   init(_ fetchAction: FetchAction = .inFlight,
-       _ products: [Product] = []) {
+       _ products: [RemoteCategory] = []) {
     self.fetchAction = fetchAction
     self.products = products
   }
