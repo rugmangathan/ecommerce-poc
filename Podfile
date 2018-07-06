@@ -5,6 +5,7 @@ target 'ecommerce-poc' do
   pod 'RxSwift', '= 4.1.2'
   pod 'RxCocoa', '= 4.1.2'
   pod 'RxAlamofire', '= 4.1.0'
+  pod 'RxGRDB', '= 0.11.0'
 
   target 'ecommerce-pocTests' do
     pod 'RxBlocking', '= 4.1.2'
