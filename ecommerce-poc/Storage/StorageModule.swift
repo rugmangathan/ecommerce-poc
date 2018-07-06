@@ -41,8 +41,8 @@ class StorageModule {
   func setupDatabase() {
     do {
       try dbQueue.write { db in
-        try db.create(table: Category.databaseTableName) { t in
-          typealias Column = Category.Column
+        try db.create(table: LocalCategory.databaseTableName) { t in
+          typealias Column = LocalCategory.Column
           t.column(Column.id, .integer).primaryKey()
           t.column(Column.name, .text).notNull()
           t.column(Column.parent, .integer)

@@ -1,5 +1,5 @@
 //
-//  Category.swift
+//  LocalCategory.swift
 //  ecommerce-poc
 //
 //  Created by Rugmangathan on 06/07/18.
@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import RxGRDB
 import GRDB
 
-class Category: Record {
+public class LocalCategory: Record, Equatable {
 
   struct Column {
     static let id = "id"
@@ -20,9 +19,9 @@ class Category: Record {
 
   let id: Int
   let name: String
-  let parent: Int?
+  var parent: Int?
 
-  init(_ id: Int,
+  public init(_ id: Int,
        _ name: String,
        _ parent: Int?) {
     self.id = id
@@ -35,7 +34,7 @@ class Category: Record {
     return "category"
   }
 
-  required init(row: Row) {
+  required public init(row: Row) {
     id = row[Column.id]
     name = row[Column.name]
     parent = row[Column.parent]
@@ -46,5 +45,9 @@ class Category: Record {
     container[Column.id] = id
     container[Column.name] = name
     container[Column.parent] = parent
+  }
+
+  public static func ==(lhs: LocalCategory, rhs: LocalCategory) -> Bool {
+    return lhs.id == rhs.id
   }
 }

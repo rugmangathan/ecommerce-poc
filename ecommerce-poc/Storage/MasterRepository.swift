@@ -9,6 +9,14 @@
 import Foundation
 import RxSwift
 
-protocol CachedRepository {
-  func getProducts() -> Observable<FetchEvent<[RemoteCategory]>>
+class MasterRepository {
+  let categoryDao: CategoryDao
+  let commonApi: CommonApiProtocol
+
+  init(_ categoryDao: CategoryDao,
+       _ commonApi: CommonApiProtocol) {
+    self.categoryDao = categoryDao
+    self.commonApi = commonApi
+  }
 }
+

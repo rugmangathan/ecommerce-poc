@@ -41,7 +41,7 @@ class ProductsModelTests: XCTestCase {
 
     stub(commonApi) { (commonApi) in
       when(commonApi.retrieveProducts())
-        .thenReturn(Observable.just(ProductsResponse(categories)))
+        .thenReturn(Observable.just(ProductsResponse(categories: categories)))
     }
 
     // Act

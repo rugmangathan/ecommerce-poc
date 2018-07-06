@@ -25,10 +25,17 @@
 		F4406F0F20EF787D00A9E8E5 /* RemoteCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0E20EF787D00A9E8E5 /* RemoteCategory.swift */; };
 		F49E96B620EF9186008781F9 /* MasterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96B520EF9186008781F9 /* MasterRepository.swift */; };
 		F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96B720EF92C2008781F9 /* StorageModule.swift */; };
-		F49E96BD20EF99C6008781F9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96BC20EF99C6008781F9 /* Category.swift */; };
+		F49E96BD20EF99C6008781F9 /* LocalCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96BC20EF99C6008781F9 /* LocalCategory.swift */; };
 		F49E96C020EFA0EB008781F9 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */; };
 		F49E96C220EFB3D0008781F9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96C120EFB3D0008781F9 /* Product.swift */; };
 		F49E96C420EFBC65008781F9 /* Variant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96C320EFBC65008781F9 /* Variant.swift */; };
+		F49E96C620EFD0DE008781F9 /* CategoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96C520EFD0DE008781F9 /* CategoryDao.swift */; };
+		F49E96C820EFD21C008781F9 /* LocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96C720EFD21C008781F9 /* LocalRepository.swift */; };
+		F49E96CE20EFD349008781F9 /* CategoriesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96CD20EFD349008781F9 /* CategoriesModelTests.swift */; };
+		F49E96D020EFD3DF008781F9 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96CF20EFD3DF008781F9 /* CategoriesModel.swift */; };
+		F49E96D220EFD3EB008781F9 /* CategoriesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96D120EFD3EB008781F9 /* CategoriesState.swift */; };
+		F49E96D520EFD691008781F9 /* GrdbRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96D420EFD691008781F9 /* GrdbRepository.swift */; };
+		F49E96D720EFDB9A008781F9 /* CachedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96D620EFDB9A008781F9 /* CachedRepository.swift */; };
 		F4D4B90320EF7D6A007F836E /* CommonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D4B90220EF7D6A007F836E /* CommonApi.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,10 +76,17 @@
 		F4406F0E20EF787D00A9E8E5 /* RemoteCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCategory.swift; sourceTree = "<group>"; };
 		F49E96B520EF9186008781F9 /* MasterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterRepository.swift; sourceTree = "<group>"; };
 		F49E96B720EF92C2008781F9 /* StorageModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModule.swift; sourceTree = "<group>"; };
-		F49E96BC20EF99C6008781F9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		F49E96BC20EF99C6008781F9 /* LocalCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCategory.swift; sourceTree = "<group>"; };
 		F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		F49E96C120EFB3D0008781F9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F49E96C320EFBC65008781F9 /* Variant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variant.swift; sourceTree = "<group>"; };
+		F49E96C520EFD0DE008781F9 /* CategoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDao.swift; sourceTree = "<group>"; };
+		F49E96C720EFD21C008781F9 /* LocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepository.swift; sourceTree = "<group>"; };
+		F49E96CD20EFD349008781F9 /* CategoriesModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModelTests.swift; sourceTree = "<group>"; };
+		F49E96CF20EFD3DF008781F9 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
+		F49E96D120EFD3EB008781F9 /* CategoriesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesState.swift; sourceTree = "<group>"; };
+		F49E96D420EFD691008781F9 /* GrdbRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrdbRepository.swift; sourceTree = "<group>"; };
+		F49E96D620EFDB9A008781F9 /* CachedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedRepository.swift; sourceTree = "<group>"; };
 		F4D4B90220EF7D6A007F836E /* CommonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +153,7 @@
 		F4406ECE20EF4C6900A9E8E5 /* ecommerce-poc */ = {
 			isa = PBXGroup;
 			children = (
+				F49E96C920EFD2D5008781F9 /* Category */,
 				F49E96AE20EF8E8D008781F9 /* Storage */,
 				F4D4B90120EF7D6A007F836E /* Api */,
 				F4406EF820EF5BE500A9E8E5 /* Common */,
@@ -156,6 +171,7 @@
 		F4406EE320EF4C6B00A9E8E5 /* ecommerce-pocTests */ = {
 			isa = PBXGroup;
 			children = (
+				F49E96CA20EFD2FB008781F9 /* Categories */,
 				F49E96BB20EF9850008781F9 /* Mock */,
 				F4406EF720EF54D000A9E8E5 /* Products */,
 				F4406EE620EF4C6B00A9E8E5 /* Info.plist */,
@@ -197,7 +213,7 @@
 				F4406F0520EF61FB00A9E8E5 /* RemoteProduct.swift */,
 				F4406F0720EF62FB00A9E8E5 /* RemoteVariant.swift */,
 				F4406F0C20EF77CB00A9E8E5 /* ProductsResponse.swift */,
-				F49E96BC20EF99C6008781F9 /* Category.swift */,
+				F49E96BC20EF99C6008781F9 /* LocalCategory.swift */,
 				F49E96C120EFB3D0008781F9 /* Product.swift */,
 				F49E96C320EFBC65008781F9 /* Variant.swift */,
 			);
@@ -207,8 +223,12 @@
 		F49E96AE20EF8E8D008781F9 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				F49E96D620EFDB9A008781F9 /* CachedRepository.swift */,
 				F49E96B520EF9186008781F9 /* MasterRepository.swift */,
 				F49E96B720EF92C2008781F9 /* StorageModule.swift */,
+				F49E96C520EFD0DE008781F9 /* CategoryDao.swift */,
+				F49E96C720EFD21C008781F9 /* LocalRepository.swift */,
+				F49E96D420EFD691008781F9 /* GrdbRepository.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -219,6 +239,23 @@
 				F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		F49E96C920EFD2D5008781F9 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F49E96CF20EFD3DF008781F9 /* CategoriesModel.swift */,
+				F49E96D120EFD3EB008781F9 /* CategoriesState.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		F49E96CA20EFD2FB008781F9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F49E96CD20EFD349008781F9 /* CategoriesModelTests.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		F4D4B90120EF7D6A007F836E /* Api */ = {
@@ -431,7 +468,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/ecommerce-pocTests/Mock/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n${PODS_ROOT}/Cuckoo/run generate --no-header --no-timestamp --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/ecommerce-poc/Api/CommonApi.swift\" \\\n# ... and so forth\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/ecommerce-pocTests/Mock/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n${PODS_ROOT}/Cuckoo/run generate --no-header --no-timestamp --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/ecommerce-poc/Api/CommonApi.swift\" \\\n\"$INPUT_DIR/ecommerce-poc/Storage/LocalRepository.swift\" \\\n\"$INPUT_DIR/ecommerce-poc/Storage/CachedRepository.swift\" \\\n# ... and so forth\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -442,20 +479,26 @@
 			files = (
 				F4406F0D20EF77CB00A9E8E5 /* ProductsResponse.swift in Sources */,
 				F4406ED220EF4C6A00A9E8E5 /* ViewController.swift in Sources */,
+				F49E96D520EFD691008781F9 /* GrdbRepository.swift in Sources */,
 				F49E96C220EFB3D0008781F9 /* Product.swift in Sources */,
 				F4406ED020EF4C6900A9E8E5 /* AppDelegate.swift in Sources */,
+				F49E96C620EFD0DE008781F9 /* CategoryDao.swift in Sources */,
 				F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */,
 				F4406EFA20EF5C1D00A9E8E5 /* MviLifecycle.swift in Sources */,
+				F49E96D220EFD3EB008781F9 /* CategoriesState.swift in Sources */,
 				F4406F0120EF614000A9E8E5 /* FetchEvent.swift in Sources */,
 				F49E96B620EF9186008781F9 /* MasterRepository.swift in Sources */,
 				F4406F0F20EF787D00A9E8E5 /* RemoteCategory.swift in Sources */,
 				F4406EFF20EF5D8C00A9E8E5 /* ProductsState.swift in Sources */,
+				F49E96D720EFDB9A008781F9 /* CachedRepository.swift in Sources */,
 				F4406F0820EF62FB00A9E8E5 /* RemoteVariant.swift in Sources */,
 				F4D4B90320EF7D6A007F836E /* CommonApi.swift in Sources */,
+				F49E96D020EFD3DF008781F9 /* CategoriesModel.swift in Sources */,
+				F49E96C820EFD21C008781F9 /* LocalRepository.swift in Sources */,
 				F4406EFD20EF5CCF00A9E8E5 /* ProductsModel.swift in Sources */,
 				F49E96C420EFBC65008781F9 /* Variant.swift in Sources */,
 				F4406F0620EF61FB00A9E8E5 /* RemoteProduct.swift in Sources */,
-				F49E96BD20EF99C6008781F9 /* Category.swift in Sources */,
+				F49E96BD20EF99C6008781F9 /* LocalCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +508,7 @@
 			files = (
 				F4406EE520EF4C6B00A9E8E5 /* ProductsModelTests.swift in Sources */,
 				F49E96C020EFA0EB008781F9 /* GeneratedMocks.swift in Sources */,
+				F49E96CE20EFD349008781F9 /* CategoriesModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
