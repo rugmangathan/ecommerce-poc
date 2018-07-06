@@ -14,7 +14,7 @@
 		F4406ED520EF4C6A00A9E8E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4406ED320EF4C6A00A9E8E5 /* Main.storyboard */; };
 		F4406ED720EF4C6B00A9E8E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4406ED620EF4C6B00A9E8E5 /* Assets.xcassets */; };
 		F4406EDA20EF4C6B00A9E8E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4406ED820EF4C6B00A9E8E5 /* LaunchScreen.storyboard */; };
-		F4406EE520EF4C6B00A9E8E5 /* ecommerce_pocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406EE420EF4C6B00A9E8E5 /* ecommerce_pocTests.swift */; };
+		F4406EE520EF4C6B00A9E8E5 /* ProductsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406EE420EF4C6B00A9E8E5 /* ProductsModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,7 @@
 		F4406ED920EF4C6B00A9E8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4406EDB20EF4C6B00A9E8E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4406EE020EF4C6B00A9E8E5 /* ecommerce-pocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ecommerce-pocTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4406EE420EF4C6B00A9E8E5 /* ecommerce_pocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ecommerce_pocTests.swift; sourceTree = "<group>"; };
+		F4406EE420EF4C6B00A9E8E5 /* ProductsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsModelTests.swift; sourceTree = "<group>"; };
 		F4406EE620EF4C6B00A9E8E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,10 +122,18 @@
 		F4406EE320EF4C6B00A9E8E5 /* ecommerce-pocTests */ = {
 			isa = PBXGroup;
 			children = (
-				F4406EE420EF4C6B00A9E8E5 /* ecommerce_pocTests.swift */,
+				F4406EF720EF54D000A9E8E5 /* Products */,
 				F4406EE620EF4C6B00A9E8E5 /* Info.plist */,
 			);
 			path = "ecommerce-pocTests";
+			sourceTree = "<group>";
+		};
+		F4406EF720EF54D000A9E8E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4406EE420EF4C6B00A9E8E5 /* ProductsModelTests.swift */,
+			);
+			path = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,7 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4406EE520EF4C6B00A9E8E5 /* ecommerce_pocTests.swift in Sources */,
+				F4406EE520EF4C6B00A9E8E5 /* ProductsModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
