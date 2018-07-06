@@ -47,6 +47,15 @@ class StorageModule {
           t.column(Column.name, .text).notNull()
           t.column(Column.parent, .integer)
         }
+
+        try db.create(table: Product.databaseTableName) { t in
+          typealias Column = Product.Column
+          t.column(Column.id, .integer).primaryKey()
+          t.column(Column.name, .text).notNull()
+          t.column(Column.taxName, .text).notNull()
+          t.column(Column.taxValue, .integer).notNull()
+          t.column(Column.categoryId, .integer).notNull()
+        }
       }
     } catch let error {
       fatalError("Can't write to database: \(error)")

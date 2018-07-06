@@ -27,6 +27,7 @@
 		F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96B720EF92C2008781F9 /* StorageModule.swift */; };
 		F49E96BD20EF99C6008781F9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96BC20EF99C6008781F9 /* Category.swift */; };
 		F49E96C020EFA0EB008781F9 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */; };
+		F49E96C220EFB3D0008781F9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96C120EFB3D0008781F9 /* Product.swift */; };
 		F4D4B90320EF7D6A007F836E /* CommonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D4B90220EF7D6A007F836E /* CommonApi.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		F49E96B720EF92C2008781F9 /* StorageModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModule.swift; sourceTree = "<group>"; };
 		F49E96BC20EF99C6008781F9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		F49E96C120EFB3D0008781F9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		F4D4B90220EF7D6A007F836E /* CommonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,6 +196,7 @@
 				F4406F0720EF62FB00A9E8E5 /* RemoteVariant.swift */,
 				F4406F0C20EF77CB00A9E8E5 /* ProductsResponse.swift */,
 				F49E96BC20EF99C6008781F9 /* Category.swift */,
+				F49E96C120EFB3D0008781F9 /* Product.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 			files = (
 				F4406F0D20EF77CB00A9E8E5 /* ProductsResponse.swift in Sources */,
 				F4406ED220EF4C6A00A9E8E5 /* ViewController.swift in Sources */,
+				F49E96C220EFB3D0008781F9 /* Product.swift in Sources */,
 				F4406ED020EF4C6900A9E8E5 /* AppDelegate.swift in Sources */,
 				F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */,
 				F4406EFA20EF5C1D00A9E8E5 /* MviLifecycle.swift in Sources */,
