@@ -17,16 +17,19 @@ class CategoriesModelTests: XCTestCase {
 
   var disposeBag: DisposeBag!
   var lifecycleEvents: PublishRelay<MviLifecycle>!
+  var stateRelay: PublishRelay<CategoriesState>!
   var observer: TestableObserver<CategoriesState>!
   var cachedRepository: MockCachedRepository!
 
   var categories: [LocalCategory]!
+  private let initialState = CategoriesState()
 
   override func setUp() {
     super.setUp()
 
     disposeBag = DisposeBag()
     lifecycleEvents = PublishRelay<MviLifecycle>()
+    stateRelay = PublishRelay<CategoriesState>()
     observer = TestScheduler(initialClock: 0)
       .createObserver(CategoriesState.self)
     cachedRepository = MockCachedRepository()
@@ -45,12 +48,13 @@ class CategoriesModelTests: XCTestCase {
     }
 
     CategoriesModel
-      .bind(lifecycleEvents.asObservable(), cachedRepository)
+      .bind(lifecycleEvents.asObservable(), cachedRepository, stateRelay.asObservable())
       .subscribe(observer)
       .disposed(by: disposeBag)
 
     // Act
     lifecycleEvents.accept(.created)
+    stateRelay.accept(initialState)
 
     //Assert
     let expectedValues = [
@@ -68,12 +72,13 @@ class CategoriesModelTests: XCTestCase {
     }
 
     CategoriesModel
-      .bind(lifecycleEvents.asObservable(), cachedRepository)
+      .bind(lifecycleEvents.asObservable(), cachedRepository, stateRelay.asObservable())
       .subscribe(observer)
       .disposed(by: disposeBag)
 
     // Act
     lifecycleEvents.accept(.created)
+    stateRelay.accept(initialState)
 
     //Assert
     let expectedValues = [

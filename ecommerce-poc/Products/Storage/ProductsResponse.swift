@@ -11,15 +11,6 @@ import Foundation
 struct ProductsResponse: Decodable {
   let categories: [RemoteCategory]
 
-  enum CodingKeys: String, CodingKey {
-    case categories
-  }
-
-  init(from decoder: Decoder) throws {
-    let values = try decoder.container(keyedBy: CodingKeys.self)
-    categories = try values.decode([RemoteCategory].self, forKey: .categories)
-  }
-
   func toCategories() -> [LocalCategory] {
     var localCategories = [LocalCategory]()
     _ = categories.map { remoteCategory in
