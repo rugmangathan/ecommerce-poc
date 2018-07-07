@@ -11,11 +11,19 @@ import Cuckoo
 @testable import ecommerce_poc
 
 class CategoriesViewTests: XCTestCase {
+  var view: MockSpyableCategoriesView!
+  var renderer: CategoriesViewRenderer!
+
+  override func setUp() {
+    super.setUp()
+
+    view = MockSpyableCategoriesView()
+      .withEnabledSuperclassSpy()
+    renderer = CategoriesViewRenderer(view)
+  }
+
   func test_renderFetchingState() {
     // Setup
-    let view = MockSpyableCategoriesView()
-      .withEnabledSuperclassSpy()
-    let renderer = CategoriesViewRenderer(view)
     let state = CategoriesState()
 
     // Events
@@ -28,9 +36,6 @@ class CategoriesViewTests: XCTestCase {
 
   func test_renderFetchFailedState() {
     // Setup
-    let view = MockSpyableCategoriesView()
-      .withEnabledSuperclassSpy()
-    let renderer = CategoriesViewRenderer(view)
     let state = CategoriesState(.fetchFailed, [])
 
     // Events
