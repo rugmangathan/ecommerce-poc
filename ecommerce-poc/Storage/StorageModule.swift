@@ -41,7 +41,7 @@ struct StorageModule {
         typealias Column = Variant.Column
         t.column(Column.id, .integer).primaryKey()
         t.column(Column.color, .text).notNull()
-        t.column(Column.size, .integer).notNull()
+        t.column(Column.size, .integer)
         t.column(Column.price, .integer).notNull()
         t.column(Column.productId, .integer).notNull()
       }

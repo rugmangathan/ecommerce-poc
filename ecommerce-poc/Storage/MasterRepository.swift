@@ -15,6 +15,10 @@ class MasterRepository {
   let productDao: ProductDao
   let commonApi: CommonApiProtocol
 
+  private lazy var variantDao: VariantDao = {
+    return VariantDao(dbQueue)
+  }()
+
   init(_ categoryDao: CategoryDao,
        _ productDao: ProductDao,
        _ commonApi: CommonApiProtocol) {
@@ -33,8 +37,10 @@ extension MasterRepository: CachedRepository {
       .retrieveProducts()
       .flatMapLatest { categoriesResponse -> Observable<FetchEvent<[LocalCategory]>> in
         let categories = categoriesResponse.toCategories().sorted(by: { $0.id < $1.id })
-        let products = categoriesResponse.toProducts()
+        let products = categoriesResponse.toProducts().sorted(by: { $0.id < $1.id })
+        let variants = categoriesResponse.toVariants().sorted(by: { $0.id < $1.id })
         self.diffAndUpdateCachedProducts(products)
+        self.diffAndUpdateCachedVariants(variants)
         return self.diffAndUpdateCachedCategories(categories)
           .flatMapLatest { _ in
             self.categoryDao
@@ -71,9 +77,9 @@ extension MasterRepository: CachedRepository {
         .first()!
 
       let diffCallback = ProductDiffUtilCallback(cachedProducts, remoteProducts)
-      let newProducts = diffCallback.newlyInsertedCategories()
-      let deletedProducts = diffCallback.deletedCategotries()
-      let updatedProducts = diffCallback.updatedCategories()
+      let newProducts = diffCallback.newlyInsertedProducts()
+      let deletedProducts = diffCallback.deletedProducts()
+      let updatedProducts = diffCallback.updatedProducts()
 
       if !newProducts.isEmpty {
         productDao.insertAll(newProducts)
@@ -82,7 +88,7 @@ extension MasterRepository: CachedRepository {
       _ = updatedProducts.map { productDao.update($0) }
       _ = deletedProducts.map { productDao.delete($0.id) }
     } catch let error {
-      fatalError("Diff and update categories to db failed \(error.localizedDescription)")
+      fatalError("Diff and update products to db failed \(error.localizedDescription)")
     }
   }
 
@@ -95,7 +101,7 @@ extension MasterRepository: CachedRepository {
 
       let diffCallback = CategoryDiffUtilCallback(cachedCategories, remoteCategories)
       let newCategories = diffCallback.newlyInsertedCategories()
-      let deletedTransactions = diffCallback.deletedCategotries()
+      let deletedCategories = diffCallback.deletedCategotries()
       let updatedCategories = diffCallback.updatedCategories()
 
       if !newCategories.isEmpty {
@@ -103,11 +109,34 @@ extension MasterRepository: CachedRepository {
       }
 
       _ = updatedCategories.map { categoryDao.update($0) }
-      _ = deletedTransactions.map { categoryDao.delete($0.id) }
+      _ = deletedCategories.map { categoryDao.delete($0.id) }
 
       return categoryDao.getCategories()
     } catch let error {
       fatalError("Diff and update categories to db failed \(error.localizedDescription)")
+    }
+  }
+
+  private func diffAndUpdateCachedVariants(_ remoteVariants: [Variant]) {
+    do {
+      let cachedVariants = try variantDao
+        .getAll()
+        .toBlocking()
+        .first()!
+
+      let diffCallback = VariantDiffUtilCallback(cachedVariants, remoteVariants)
+      let newVariants = diffCallback.newlyInsertedVariants()
+      let deletedVariants = diffCallback.deletedVariants()
+      let updatedVariants = diffCallback.updatedVariants()
+
+      if !newVariants.isEmpty {
+        variantDao.insertAll(newVariants)
+      }
+
+      _ = updatedVariants.map { variantDao.update($0) }
+      _ = deletedVariants.map { variantDao.delete($0.id) }
+    } catch let error {
+      fatalError("Diff and update variant to db failed \(error.localizedDescription)")
     }
   }
 }

@@ -46,4 +46,21 @@ struct ProductsResponse: Decodable {
     }
     return products
   }
+
+  func toVariants() -> [Variant] {
+    var variants = [Variant]()
+    _ = categories.map { category in
+      _ = category.products.map { product in
+        _ = product.variants.map { variant in
+          let localVariant = Variant(variant.id,
+                                variant.color,
+                                variant.size,
+                                variant.price,
+                                product.id)
+          variants.append(localVariant)
+        }
+      }
+    }
+    return variants
+  }
 }

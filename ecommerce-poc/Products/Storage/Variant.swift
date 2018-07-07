@@ -20,13 +20,13 @@ class Variant: Record {
 
   let id: Int
   let color: String
-  let size: Int
+  let size: Int?
   let price: NSDecimalNumber
   let productId: Int
 
   init(_ id: Int,
        _ color: String,
-       _ size: Int,
+       _ size: Int?,
        _ price: NSDecimalNumber,
        _ productId: Int) {
     self.id = id
@@ -59,3 +59,16 @@ class Variant: Record {
     container[Column.productId] = productId
   }
 }
+
+extension Variant: Equatable {
+  static func ==(lhs: Variant, rhs: Variant) -> Bool {
+    return lhs.id == rhs.id
+  }
+}
+
+extension Variant: Hashable {
+  public var hashValue: Int {
+    return id.hashValue
+  }
+}
+

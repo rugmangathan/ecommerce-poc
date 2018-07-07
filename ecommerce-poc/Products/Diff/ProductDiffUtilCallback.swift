@@ -45,15 +45,15 @@ class ProductDiffUtilCallback {
     self.remoteProducts = remoteProducts
   }
 
-  func newlyInsertedCategories() -> [Product] {
+  func newlyInsertedProducts() -> [Product] {
     return cud.created
   }
 
-  func deletedCategotries() -> [Product] {
+  func deletedProducts() -> [Product] {
     return cud.deleted
   }
 
-  func updatedCategories() -> [Product] {
+  func updatedProducts() -> [Product] {
     return cud.updated
   }
 }
