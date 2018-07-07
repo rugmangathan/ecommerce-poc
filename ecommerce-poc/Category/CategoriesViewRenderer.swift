@@ -24,7 +24,9 @@ class CategoriesViewRenderer {
       view.showFetchFailedMessgae(true)
     case .fetchSuccessful:
       view.showProgress(false)
-      view.showCategories(state.categories)
+      state.categories.isEmpty
+        ? view.showNoCategories(true)
+        : view.showCategories(state.categories)
     }
   }
 }

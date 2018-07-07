@@ -33,6 +33,7 @@ class CategoriesViewTests: XCTestCase {
     verify(view, times(1)).showProgress(any())
     verify(view, never()).showFetchFailedMessgae(any())
     verify(view, never()).showCategories(any())
+    verify(view, never()).showNoCategories(any())
   }
 
   func test_renderFetchFailedState() {
@@ -46,6 +47,7 @@ class CategoriesViewTests: XCTestCase {
     verify(view, times(1)).showProgress(any())
     verify(view, times(1)).showFetchFailedMessgae(any())
     verify(view, never()).showCategories(any())
+    verify(view, never()).showNoCategories(any())
   }
 
   func test_renderFetchSuccessfulState() {
@@ -61,6 +63,21 @@ class CategoriesViewTests: XCTestCase {
     // Verify
     verify(view, times(1)).showProgress(any())
     verify(view, times(1)).showCategories(any())
+    verify(view, never()).showFetchFailedMessgae(any())
+    verify(view, never()).showNoCategories(any())
+  }
+
+  func test_renderNoCatgoriesState() {
+    // Setup
+    let state = CategoriesState(.fetchSuccessful, [])
+
+    // Events
+    renderer.render(state)
+
+    // Verify
+    verify(view, times(1)).showProgress(any())
+    verify(view, times(1)).showNoCategories(any())
+    verify(view, never()).showCategories(any())
     verify(view, never()).showFetchFailedMessgae(any())
   }
 }
