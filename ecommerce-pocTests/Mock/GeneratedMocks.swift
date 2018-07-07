@@ -377,6 +377,18 @@ class MockSpyableCategoriesView: SpyableCategoriesView, Cuckoo.ClassMock {
         
     }
     
+    // ["name": "showFetchFailedMessgae", "returnSignature": "", "fullyQualifiedName": "showFetchFailedMessgae(_: Bool)", "parameterSignature": "_ show: Bool", "parameterSignatureWithoutNames": "show: Bool", "inputTypes": "Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "show", "call": "show", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "show", type: "Bool", range: CountableRange(326..<338), nameRange: CountableRange(0..<0))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+     override func showFetchFailedMessgae(_ show: Bool)  {
+        
+            return cuckoo_manager.call("showFetchFailedMessgae(_: Bool)",
+                parameters: (show),
+                superclassCall:
+                    
+                    super.showFetchFailedMessgae(show)
+                    )
+        
+    }
+    
 
 	struct __StubbingProxy_SpyableCategoriesView: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
@@ -389,6 +401,11 @@ class MockSpyableCategoriesView: SpyableCategoriesView, Cuckoo.ClassMock {
 	    func showProgress<M1: Cuckoo.Matchable>(_ show: M1) -> Cuckoo.ClassStubNoReturnFunction<(Bool)> where M1.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(Bool)>] = [wrap(matchable: show) { $0 }]
 	        return .init(stub: cuckoo_manager.createStub(for: MockSpyableCategoriesView.self, method: "showProgress(_: Bool)", parameterMatchers: matchers))
+	    }
+	    
+	    func showFetchFailedMessgae<M1: Cuckoo.Matchable>(_ show: M1) -> Cuckoo.ClassStubNoReturnFunction<(Bool)> where M1.MatchedType == Bool {
+	        let matchers: [Cuckoo.ParameterMatcher<(Bool)>] = [wrap(matchable: show) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockSpyableCategoriesView.self, method: "showFetchFailedMessgae(_: Bool)", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -413,6 +430,12 @@ class MockSpyableCategoriesView: SpyableCategoriesView, Cuckoo.ClassMock {
 	        return cuckoo_manager.verify("showProgress(_: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
+	    @discardableResult
+	    func showFetchFailedMessgae<M1: Cuckoo.Matchable>(_ show: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Bool {
+	        let matchers: [Cuckoo.ParameterMatcher<(Bool)>] = [wrap(matchable: show) { $0 }]
+	        return cuckoo_manager.verify("showFetchFailedMessgae(_: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
 	}
 
 }
@@ -424,6 +447,10 @@ class MockSpyableCategoriesView: SpyableCategoriesView, Cuckoo.ClassMock {
 
     
      override func showProgress(_ show: Bool)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func showFetchFailedMessgae(_ show: Bool)  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     

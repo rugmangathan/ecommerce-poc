@@ -23,5 +23,21 @@ class CategoriesViewTests: XCTestCase {
 
     // Verify
     verify(view, times(1)).showProgress(any())
+    verify(view, never()).showFetchFailedMessgae(any())
+  }
+
+  func test_renderFetchFailedState() {
+    // Setup
+    let view = MockSpyableCategoriesView()
+      .withEnabledSuperclassSpy()
+    let renderer = CategoriesViewRenderer(view)
+    let state = CategoriesState(.fetchFailed, [])
+
+    // Events
+    renderer.render(state)
+
+    // Verify
+    verify(view, times(1)).showFetchFailedMessgae(any())
+    verify(view, never()).showProgress(any())
   }
 }

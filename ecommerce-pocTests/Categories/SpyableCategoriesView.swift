@@ -11,4 +11,5 @@ import Foundation
 
 class SpyableCategoriesView: CategoriesView {
   func showProgress(_ show: Bool) {}
+  func showFetchFailedMessgae(_ show: Bool) {}
 }
