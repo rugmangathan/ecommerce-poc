@@ -14,28 +14,40 @@ import Cuckoo
 @testable import ecommerce_poc
 
 class CategoriesModelTests: XCTestCase {
-  func test_screenFetchesCategories_whenVisible() {
-    // Setup
-    let disposeBag = DisposeBag()
-    let lifecycleEvents = PublishRelay<MviLifecycle>()
-    let observer = TestScheduler(initialClock: 0)
-      .createObserver(CategoriesState.self)
-    let cachedRepository = MockCachedRepository()
 
-    let categories = [
+  var disposeBag: DisposeBag!
+  var lifecycleEvents: PublishRelay<MviLifecycle>!
+  var observer: TestableObserver<CategoriesState>!
+  var cachedRepository: MockCachedRepository!
+
+  var categories: [LocalCategory]!
+
+  override func setUp() {
+    super.setUp()
+
+    disposeBag = DisposeBag()
+    lifecycleEvents = PublishRelay<MviLifecycle>()
+    observer = TestScheduler(initialClock: 0)
+      .createObserver(CategoriesState.self)
+    cachedRepository = MockCachedRepository()
+
+    categories = [
       LocalCategory(1, "Electronics", nil),
       LocalCategory(2, "MensWear", nil)
     ]
+  }
+
+  func test_screenFetchesCategories_whenVisible() {
+    // Setup
+    stub(cachedRepository) { (repo) in
+      when(repo.getCategories())
+        .thenReturn(Observable.just((FetchEvent(fetchAction: .fetchSuccessful, result: categories))))
+    }
 
     CategoriesModel
       .bind(lifecycleEvents.asObservable(), cachedRepository)
       .subscribe(observer)
       .disposed(by: disposeBag)
-
-    stub(cachedRepository) { (repo) in
-      when(repo.getCategories())
-        .thenReturn(Observable.just((FetchEvent(fetchAction: .fetchSuccessful, result: categories))))
-    }
 
     // Act
     lifecycleEvents.accept(.created)
@@ -50,21 +62,15 @@ class CategoriesModelTests: XCTestCase {
 
   func test_showNoRecords_whenBothCacheAndRemoteFails() {
     // Setup
-    let disposeBag = DisposeBag()
-    let lifecycleEvents = PublishRelay<MviLifecycle>()
-    let observer = TestScheduler(initialClock: 0)
-      .createObserver(CategoriesState.self)
-    let cachedRepository = MockCachedRepository()
+    stub(cachedRepository) { (repo) in
+      when(repo.getCategories())
+        .thenReturn(Observable.just((FetchEvent(fetchAction: .fetchFailed, result: nil))))
+    }
 
     CategoriesModel
       .bind(lifecycleEvents.asObservable(), cachedRepository)
       .subscribe(observer)
       .disposed(by: disposeBag)
-
-    stub(cachedRepository) { (repo) in
-      when(repo.getCategories())
-        .thenReturn(Observable.just((FetchEvent(fetchAction: .fetchFailed, result: nil))))
-    }
 
     // Act
     lifecycleEvents.accept(.created)
