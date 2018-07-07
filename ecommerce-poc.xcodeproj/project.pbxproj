@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A4E716CA2F87D48AD136CFCB /* Pods_ecommerce_poc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00139487785828C5D8A40EEF /* Pods_ecommerce_poc.framework */; };
 		DD1518327D199F7CC24DDADF /* Pods_ecommerce_pocTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B074C2A489DFF9FDCFB8319B /* Pods_ecommerce_pocTests.framework */; };
+		F43F468820F0851C00ABC9BA /* CategoryDiffUtilCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F468720F0851C00ABC9BA /* CategoryDiffUtilCallback.swift */; };
 		F4406ED020EF4C6900A9E8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406ECF20EF4C6900A9E8E5 /* AppDelegate.swift */; };
 		F4406ED220EF4C6A00A9E8E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406ED120EF4C6A00A9E8E5 /* ViewController.swift */; };
 		F4406ED520EF4C6A00A9E8E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4406ED320EF4C6A00A9E8E5 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		5DB836B8BD43EFA0BEB3ADB4 /* Pods-ecommerce-poc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommerce-poc.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecommerce-poc/Pods-ecommerce-poc.release.xcconfig"; sourceTree = "<group>"; };
 		B074C2A489DFF9FDCFB8319B /* Pods_ecommerce_pocTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecommerce_pocTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6855FD5430E14CBD047724 /* Pods-ecommerce-pocTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommerce-pocTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ecommerce-pocTests/Pods-ecommerce-pocTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F43F468720F0851C00ABC9BA /* CategoryDiffUtilCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDiffUtilCallback.swift; sourceTree = "<group>"; };
 		F4406ECC20EF4C6900A9E8E5 /* ecommerce-poc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ecommerce-poc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4406ECF20EF4C6900A9E8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4406ED120EF4C6A00A9E8E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 				B074C2A489DFF9FDCFB8319B /* Pods_ecommerce_pocTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F43F468620F084F800ABC9BA /* Diff */ = {
+			isa = PBXGroup;
+			children = (
+				F43F468720F0851C00ABC9BA /* CategoryDiffUtilCallback.swift */,
+			);
+			path = Diff;
 			sourceTree = "<group>";
 		};
 		F4406EC320EF4C6900A9E8E5 = {
@@ -244,6 +254,7 @@
 		F49E96C920EFD2D5008781F9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				F43F468620F084F800ABC9BA /* Diff */,
 				F49E96CF20EFD3DF008781F9 /* CategoriesModel.swift */,
 				F49E96D120EFD3EB008781F9 /* CategoriesState.swift */,
 			);
@@ -489,6 +500,7 @@
 				F4406EFA20EF5C1D00A9E8E5 /* MviLifecycle.swift in Sources */,
 				F49E96D220EFD3EB008781F9 /* CategoriesState.swift in Sources */,
 				F4406F0120EF614000A9E8E5 /* FetchEvent.swift in Sources */,
+				F43F468820F0851C00ABC9BA /* CategoryDiffUtilCallback.swift in Sources */,
 				F49E96B620EF9186008781F9 /* MasterRepository.swift in Sources */,
 				F4406F0F20EF787D00A9E8E5 /* RemoteCategory.swift in Sources */,
 				F4406EFF20EF5D8C00A9E8E5 /* ProductsState.swift in Sources */,

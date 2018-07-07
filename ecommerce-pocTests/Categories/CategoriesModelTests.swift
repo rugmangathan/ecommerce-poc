@@ -47,4 +47,33 @@ class CategoriesModelTests: XCTestCase {
 
     XCTAssertEqual(observer.events, expectedValues)
   }
+
+  func test_showNoRecords_whenBothCacheAndRemoteFails() {
+    // Setup
+    let disposeBag = DisposeBag()
+    let lifecycleEvents = PublishRelay<MviLifecycle>()
+    let observer = TestScheduler(initialClock: 0)
+      .createObserver(CategoriesState.self)
+    let cachedRepository = MockCachedRepository()
+
+    CategoriesModel
+      .bind(lifecycleEvents.asObservable(), cachedRepository)
+      .subscribe(observer)
+      .disposed(by: disposeBag)
+
+    stub(cachedRepository) { (repo) in
+      when(repo.getCategories())
+        .thenReturn(Observable.just((FetchEvent(fetchAction: .fetchFailed, result: nil))))
+    }
+
+    // Act
+    lifecycleEvents.accept(.created)
+
+    //Assert
+    let expectedValues = [
+      Recorded.next(0, CategoriesState(.fetchFailed, []))
+    ]
+
+    XCTAssertEqual(observer.events, expectedValues)
+  }
 }

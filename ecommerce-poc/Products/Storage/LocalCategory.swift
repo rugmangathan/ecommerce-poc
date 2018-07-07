@@ -51,3 +51,9 @@ public class LocalCategory: Record, Equatable {
     return lhs.id == rhs.id
   }
 }
+
+extension LocalCategory: Hashable {
+  public var hashValue: Int {
+    return id.hashValue
+  }
+}

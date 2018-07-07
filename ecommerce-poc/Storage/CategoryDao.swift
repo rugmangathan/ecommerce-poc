@@ -47,4 +47,24 @@ class CategoryDao {
       .fetchAll(in: dbQueue)
       .asObservable()
   }
+
+  func update(_ category: LocalCategory) {
+    do {
+      try dbQueue.inDatabase { db in
+        try category.save(db)
+      }
+    } catch let error {
+      fatalError("Couldn't update the category: \(error)")
+    }
+  }
+
+  func delete(_ categoryId: Int) {
+    do {
+      try dbQueue.inDatabase { db in
+        try db.execute("DELETE FROM \(LocalCategory.databaseTableName) WHERE \(LocalCategory.Column.id) = \(categoryId)")
+      }
+    } catch let error {
+      fatalError("Couldn't delete the categories: \(error)")
+    }
+  }
 }
