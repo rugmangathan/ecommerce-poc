@@ -42,6 +42,14 @@ class CategoryDao {
 
   func getAll() -> Observable<[LocalCategory]> {
     let request = LocalCategory.all()
+
+    return request.rx
+      .fetchAll(in: dbQueue)
+      .asObservable()
+  }
+
+  func getCategories() -> Observable<[LocalCategory]> {
+    let request = LocalCategory.filter(Column(LocalCategory.Column.parent) == nil)
     return request
       .rx
       .fetchAll(in: dbQueue)

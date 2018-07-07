@@ -18,6 +18,6 @@ class GrdbRepository {
 
 extension GrdbRepository: LocalRepository {
   func getCategories() -> Observable<[LocalCategory]> {
-    return categoryDao.getAll()
+    return categoryDao.getCategories()
   }
 }

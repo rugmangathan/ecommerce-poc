@@ -10,64 +10,42 @@ import Foundation
 import RxGRDB
 import GRDB
 
-class StorageModule {
-  private let dbName = "ecommerce-poc.sqlite"
+struct StorageModule {
+  static func openDatabase(atPath path: String) throws -> DatabaseQueue {
+    dbQueue = try DatabaseQueue(path: path)
+    try migrator.migrate(dbQueue)
 
-  private lazy var applicationDocumentsDirectory: URL = {
-    do {
-      let documentDirectory = try FileManager.default
-        .url(for: .documentDirectory,
-             in: .userDomainMask,
-             appropriateFor: nil,
-             create: false)
-      return documentDirectory
-    } catch let error {
-      fatalError("Can't find the documents directory: \(error)")
-    }
-  }()
+    return dbQueue
+  }
 
-  lazy var dbQueue: DatabaseQueue = {
-    let path = self.applicationDocumentsDirectory
-      .appendingPathComponent(dbName)
-      .absoluteString
-    do {
-      let db = try DatabaseQueue(path: path, configuration: Configuration())
-      return db
-    } catch let error {
-      fatalError("Can't create database queue: \(error)")
-    }
-  }()
-
-  func setupDatabase() {
-    do {
-      try dbQueue.write { db in
-        try db.create(table: LocalCategory.databaseTableName) { t in
-          typealias Column = LocalCategory.Column
-          t.column(Column.id, .integer).primaryKey()
-          t.column(Column.name, .text).notNull()
-          t.column(Column.parent, .integer)
-        }
-
-        try db.create(table: Product.databaseTableName) { t in
-          typealias Column = Product.Column
-          t.column(Column.id, .integer).primaryKey()
-          t.column(Column.name, .text).notNull()
-          t.column(Column.taxName, .text).notNull()
-          t.column(Column.taxValue, .integer).notNull()
-          t.column(Column.categoryId, .integer).notNull()
-        }
-
-        try db.create(table: Variant.databaseTableName) { t in
-          typealias Column = Variant.Column
-          t.column(Column.id, .integer).primaryKey()
-          t.column(Column.color, .text).notNull()
-          t.column(Column.size, .integer).notNull()
-          t.column(Column.price, .integer).notNull()
-          t.column(Column.productId, .integer).notNull()
-        }
+  static var migrator: DatabaseMigrator {
+    var migrator = DatabaseMigrator()
+    migrator.registerMigration("v1.0") { db in
+      try db.create(table: LocalCategory.databaseTableName) { t in
+        typealias Column = LocalCategory.Column
+        t.column(Column.id, .integer).primaryKey()
+        t.column(Column.name, .text).notNull()
+        t.column(Column.parent, .integer)
       }
-    } catch let error {
-      fatalError("Can't write to database: \(error)")
+      
+      try db.create(table: Product.databaseTableName) { t in
+        typealias Column = Product.Column
+        t.column(Column.id, .integer).primaryKey()
+        t.column(Column.name, .text).notNull()
+        t.column(Column.taxName, .text).notNull()
+        t.column(Column.taxValue, .integer).notNull()
+        t.column(Column.categoryId, .integer).notNull()
+      }
+      
+      try db.create(table: Variant.databaseTableName) { t in
+        typealias Column = Variant.Column
+        t.column(Column.id, .integer).primaryKey()
+        t.column(Column.color, .text).notNull()
+        t.column(Column.size, .integer).notNull()
+        t.column(Column.price, .integer).notNull()
+        t.column(Column.productId, .integer).notNull()
+      }
     }
+    return migrator
   }
 }

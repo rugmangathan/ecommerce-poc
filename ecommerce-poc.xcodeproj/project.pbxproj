@@ -10,12 +10,13 @@
 		A4E716CA2F87D48AD136CFCB /* Pods_ecommerce_poc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00139487785828C5D8A40EEF /* Pods_ecommerce_poc.framework */; };
 		DD1518327D199F7CC24DDADF /* Pods_ecommerce_pocTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B074C2A489DFF9FDCFB8319B /* Pods_ecommerce_pocTests.framework */; };
 		F40A0B8320F09296000D7CBF /* CategoriesViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40A0B8220F09296000D7CBF /* CategoriesViewRenderer.swift */; };
+		F40A0B8620F09D69000D7CBF /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40A0B8420F09D69000D7CBF /* CategoriesViewController.swift */; };
+		F416AC6F20F0DDBE00451B65 /* MviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416AC6E20F0DDBE00451B65 /* MviController.swift */; };
 		F43F468820F0851C00ABC9BA /* CategoryDiffUtilCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F468720F0851C00ABC9BA /* CategoryDiffUtilCallback.swift */; };
 		F43F468C20F0900800ABC9BA /* CategoriesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F468B20F0900800ABC9BA /* CategoriesViewTests.swift */; };
 		F43F469020F090A800ABC9BA /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F468F20F090A800ABC9BA /* CategoriesView.swift */; };
 		F43F469220F0916600ABC9BA /* SpyableCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F469120F0916600ABC9BA /* SpyableCategoriesView.swift */; };
 		F4406ED020EF4C6900A9E8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406ECF20EF4C6900A9E8E5 /* AppDelegate.swift */; };
-		F4406ED220EF4C6A00A9E8E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406ED120EF4C6A00A9E8E5 /* ViewController.swift */; };
 		F4406ED520EF4C6A00A9E8E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4406ED320EF4C6A00A9E8E5 /* Main.storyboard */; };
 		F4406ED720EF4C6B00A9E8E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4406ED620EF4C6B00A9E8E5 /* Assets.xcassets */; };
 		F4406EDA20EF4C6B00A9E8E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4406ED820EF4C6B00A9E8E5 /* LaunchScreen.storyboard */; };
@@ -62,13 +63,14 @@
 		B074C2A489DFF9FDCFB8319B /* Pods_ecommerce_pocTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecommerce_pocTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6855FD5430E14CBD047724 /* Pods-ecommerce-pocTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommerce-pocTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ecommerce-pocTests/Pods-ecommerce-pocTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F40A0B8220F09296000D7CBF /* CategoriesViewRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewRenderer.swift; sourceTree = "<group>"; };
+		F40A0B8420F09D69000D7CBF /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		F416AC6E20F0DDBE00451B65 /* MviController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviController.swift; sourceTree = "<group>"; };
 		F43F468720F0851C00ABC9BA /* CategoryDiffUtilCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDiffUtilCallback.swift; sourceTree = "<group>"; };
 		F43F468B20F0900800ABC9BA /* CategoriesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewTests.swift; sourceTree = "<group>"; };
 		F43F468F20F090A800ABC9BA /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		F43F469120F0916600ABC9BA /* SpyableCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyableCategoriesView.swift; sourceTree = "<group>"; };
 		F4406ECC20EF4C6900A9E8E5 /* ecommerce-poc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ecommerce-poc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4406ECF20EF4C6900A9E8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4406ED120EF4C6A00A9E8E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F4406ED420EF4C6A00A9E8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4406ED620EF4C6B00A9E8E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4406ED920EF4C6B00A9E8E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -177,7 +179,6 @@
 				F4406EF820EF5BE500A9E8E5 /* Common */,
 				F4406EFB20EF5C7400A9E8E5 /* Products */,
 				F4406ECF20EF4C6900A9E8E5 /* AppDelegate.swift */,
-				F4406ED120EF4C6A00A9E8E5 /* ViewController.swift */,
 				F4406ED320EF4C6A00A9E8E5 /* Main.storyboard */,
 				F4406ED620EF4C6B00A9E8E5 /* Assets.xcassets */,
 				F4406ED820EF4C6B00A9E8E5 /* LaunchScreen.storyboard */,
@@ -267,6 +268,7 @@
 				F49E96D120EFD3EB008781F9 /* CategoriesState.swift */,
 				F43F468F20F090A800ABC9BA /* CategoriesView.swift */,
 				F40A0B8220F09296000D7CBF /* CategoriesViewRenderer.swift */,
+				F40A0B8420F09D69000D7CBF /* CategoriesViewController.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D4B90220EF7D6A007F836E /* CommonApi.swift */,
+				F416AC6E20F0DDBE00451B65 /* MviController.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -503,7 +506,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4406F0D20EF77CB00A9E8E5 /* ProductsResponse.swift in Sources */,
-				F4406ED220EF4C6A00A9E8E5 /* ViewController.swift in Sources */,
 				F49E96D520EFD691008781F9 /* GrdbRepository.swift in Sources */,
 				F49E96C220EFB3D0008781F9 /* Product.swift in Sources */,
 				F4406ED020EF4C6900A9E8E5 /* AppDelegate.swift in Sources */,
@@ -514,6 +516,7 @@
 				F49E96D220EFD3EB008781F9 /* CategoriesState.swift in Sources */,
 				F4406F0120EF614000A9E8E5 /* FetchEvent.swift in Sources */,
 				F43F468820F0851C00ABC9BA /* CategoryDiffUtilCallback.swift in Sources */,
+				F40A0B8620F09D69000D7CBF /* CategoriesViewController.swift in Sources */,
 				F49E96B620EF9186008781F9 /* MasterRepository.swift in Sources */,
 				F4406F0F20EF787D00A9E8E5 /* RemoteCategory.swift in Sources */,
 				F4406EFF20EF5D8C00A9E8E5 /* ProductsState.swift in Sources */,
@@ -525,6 +528,7 @@
 				F4406EFD20EF5CCF00A9E8E5 /* ProductsModel.swift in Sources */,
 				F40A0B8320F09296000D7CBF /* CategoriesViewRenderer.swift in Sources */,
 				F49E96C420EFBC65008781F9 /* Variant.swift in Sources */,
+				F416AC6F20F0DDBE00451B65 /* MviController.swift in Sources */,
 				F4406F0620EF61FB00A9E8E5 /* RemoteProduct.swift in Sources */,
 				F49E96BD20EF99C6008781F9 /* LocalCategory.swift in Sources */,
 			);

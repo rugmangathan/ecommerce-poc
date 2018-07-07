@@ -47,7 +47,13 @@ class RemoteProduct: Decodable, Equatable {
     let values = try decoder.container(keyedBy: CodingKeys.self)
     let id = try values.decode(Int.self, forKey: .id)
     let name = try values.decode(String.self, forKey: .name)
-    let dateAdded = try values.decode(Date.self, forKey: .dateAdded)
+    let dateString = try values.decode(String.self, forKey: .dateAdded)
+    let formatter = DateFormatter()
+    formatter.locale = Locale.current
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    guard let dateAdded = formatter.date(from: dateString) else {
+      fatalError("Product: Invalid date found.")
+    }
     let variants = try values.decode([RemoteVariant].self, forKey: .variants)
     let tax = try values.nestedContainer(keyedBy: TaxKeys.self, forKey: .tax)
     let taxName = try tax.decode(String.self, forKey: .name)

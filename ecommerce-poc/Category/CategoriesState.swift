@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CategoriesState: Equatable {
+class CategoriesState: MviState {
   var fetchAction: FetchAction
   var categories: [LocalCategory]
 
