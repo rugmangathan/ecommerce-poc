@@ -14,6 +14,8 @@
 		F416AC6F20F0DDBE00451B65 /* MviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416AC6E20F0DDBE00451B65 /* MviController.swift */; };
 		F416AC7320F0E98700451B65 /* LocalCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416AC7120F0E98700451B65 /* LocalCategory.swift */; };
 		F416AC7420F0E98700451B65 /* RemoteCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416AC7220F0E98700451B65 /* RemoteCategory.swift */; };
+		F416AC7720F0EE5900451B65 /* ProductDiffUtilCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416AC7620F0EE5900451B65 /* ProductDiffUtilCallback.swift */; };
+		F416AC7920F0EFCA00451B65 /* ProductDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F416AC7820F0EFCA00451B65 /* ProductDao.swift */; };
 		F43F468820F0851C00ABC9BA /* CategoryDiffUtilCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F468720F0851C00ABC9BA /* CategoryDiffUtilCallback.swift */; };
 		F43F468C20F0900800ABC9BA /* CategoriesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F468B20F0900800ABC9BA /* CategoriesViewTests.swift */; };
 		F43F469020F090A800ABC9BA /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F468F20F090A800ABC9BA /* CategoriesView.swift */; };
@@ -67,6 +69,8 @@
 		F416AC6E20F0DDBE00451B65 /* MviController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MviController.swift; sourceTree = "<group>"; };
 		F416AC7120F0E98700451B65 /* LocalCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalCategory.swift; sourceTree = "<group>"; };
 		F416AC7220F0E98700451B65 /* RemoteCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteCategory.swift; sourceTree = "<group>"; };
+		F416AC7620F0EE5900451B65 /* ProductDiffUtilCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDiffUtilCallback.swift; sourceTree = "<group>"; };
+		F416AC7820F0EFCA00451B65 /* ProductDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDao.swift; sourceTree = "<group>"; };
 		F43F468720F0851C00ABC9BA /* CategoryDiffUtilCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDiffUtilCallback.swift; sourceTree = "<group>"; };
 		F43F468B20F0900800ABC9BA /* CategoriesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewTests.swift; sourceTree = "<group>"; };
 		F43F468F20F090A800ABC9BA /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
@@ -151,6 +155,14 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		F416AC7520F0EE3E00451B65 /* Diff */ = {
+			isa = PBXGroup;
+			children = (
+				F416AC7620F0EE5900451B65 /* ProductDiffUtilCallback.swift */,
+			);
+			path = Diff;
+			sourceTree = "<group>";
+		};
 		F43F468620F084F800ABC9BA /* Diff */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +239,7 @@
 		F4406EFB20EF5C7400A9E8E5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				F416AC7520F0EE3E00451B65 /* Diff */,
 				F4406F0420EF61EE00A9E8E5 /* Storage */,
 				F4406EFC20EF5CCF00A9E8E5 /* ProductsModel.swift */,
 				F4406EFE20EF5D8C00A9E8E5 /* ProductsState.swift */,
@@ -255,6 +268,7 @@
 				F49E96C520EFD0DE008781F9 /* CategoryDao.swift */,
 				F49E96C720EFD21C008781F9 /* LocalRepository.swift */,
 				F49E96D420EFD691008781F9 /* GrdbRepository.swift */,
+				F416AC7820F0EFCA00451B65 /* ProductDao.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -521,6 +535,7 @@
 				F416AC7420F0E98700451B65 /* RemoteCategory.swift in Sources */,
 				F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */,
 				F4406EFA20EF5C1D00A9E8E5 /* MviLifecycle.swift in Sources */,
+				F416AC7920F0EFCA00451B65 /* ProductDao.swift in Sources */,
 				F43F469020F090A800ABC9BA /* CategoriesView.swift in Sources */,
 				F49E96D220EFD3EB008781F9 /* CategoriesState.swift in Sources */,
 				F4406F0120EF614000A9E8E5 /* FetchEvent.swift in Sources */,
@@ -529,6 +544,7 @@
 				F49E96B620EF9186008781F9 /* MasterRepository.swift in Sources */,
 				F4406EFF20EF5D8C00A9E8E5 /* ProductsState.swift in Sources */,
 				F49E96D720EFDB9A008781F9 /* CachedRepository.swift in Sources */,
+				F416AC7720F0EE5900451B65 /* ProductDiffUtilCallback.swift in Sources */,
 				F4406F0820EF62FB00A9E8E5 /* RemoteVariant.swift in Sources */,
 				F4D4B90320EF7D6A007F836E /* CommonApi.swift in Sources */,
 				F416AC7320F0E98700451B65 /* LocalCategory.swift in Sources */,

@@ -23,7 +23,9 @@ class CategoriesViewController: MviController<CategoriesState> {
 
   private lazy var repository: CachedRepository = {
     let categoryDao = CategoryDao(dbQueue)
-    return MasterRepository(categoryDao, commonApi)
+    return MasterRepository(categoryDao,
+                            ProductDao(dbQueue),
+                            commonApi)
   }()
 
   private lazy var renderer: CategoriesViewRenderer = {

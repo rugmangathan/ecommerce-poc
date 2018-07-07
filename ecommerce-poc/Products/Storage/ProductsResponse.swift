@@ -31,4 +31,19 @@ struct ProductsResponse: Decodable {
 
     return localCategories
   }
+
+  func toProducts() -> [Product] {
+    var products = [Product]()
+    _ = categories.map { remoteCategory in
+      _ = remoteCategory.products.map { product in
+        let localProduct = Product(product.id,
+                                   product.name,
+                                   product.taxName,
+                                   product.taxValue,
+                                   remoteCategory.id)
+        products.append(localProduct)
+      }
+    }
+    return products
+  }
 }

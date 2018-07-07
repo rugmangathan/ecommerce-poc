@@ -12,11 +12,14 @@ import RxBlocking
 
 class MasterRepository {
   let categoryDao: CategoryDao
+  let productDao: ProductDao
   let commonApi: CommonApiProtocol
 
   init(_ categoryDao: CategoryDao,
+       _ productDao: ProductDao,
        _ commonApi: CommonApiProtocol) {
     self.categoryDao = categoryDao
+    self.productDao = productDao
     self.commonApi = commonApi
   }
 }
@@ -30,6 +33,8 @@ extension MasterRepository: CachedRepository {
       .retrieveProducts()
       .flatMapLatest { categoriesResponse -> Observable<FetchEvent<[LocalCategory]>> in
         let categories = categoriesResponse.toCategories().sorted(by: { $0.id < $1.id })
+        let products = categoriesResponse.toProducts()
+        self.diffAndUpdateCachedProducts(products)
         return self.diffAndUpdateCachedCategories(categories)
           .flatMapLatest { _ in
             self.categoryDao
@@ -56,6 +61,29 @@ extension MasterRepository: CachedRepository {
 
   func getProducts() -> Observable<FetchEvent<[RemoteCategory]>> {
     return Observable.just(FetchEvent(fetchAction: .fetchFailed, result: nil))
+  }
+
+  private func diffAndUpdateCachedProducts(_ remoteProducts: [Product]) {
+    do {
+      let cachedProducts = try productDao
+        .getAll()
+        .toBlocking()
+        .first()!
+
+      let diffCallback = ProductDiffUtilCallback(cachedProducts, remoteProducts)
+      let newProducts = diffCallback.newlyInsertedCategories()
+      let deletedProducts = diffCallback.deletedCategotries()
+      let updatedProducts = diffCallback.updatedCategories()
+
+      if !newProducts.isEmpty {
+        productDao.insertAll(newProducts)
+      }
+
+      _ = updatedProducts.map { productDao.update($0) }
+      _ = deletedProducts.map { productDao.delete($0.id) }
+    } catch let error {
+      fatalError("Diff and update categories to db failed \(error.localizedDescription)")
+    }
   }
 
   private func diffAndUpdateCachedCategories(_ remoteCategories: [LocalCategory]) -> Observable<[LocalCategory]> {

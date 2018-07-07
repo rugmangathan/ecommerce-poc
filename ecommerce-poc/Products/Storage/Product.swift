@@ -61,3 +61,15 @@ class Product: Record {
     container[Column.categoryId] = categoryId
   }
 }
+
+extension Product: Equatable {
+  static func == (lhs: Product, rhs: Product) -> Bool {
+    return lhs.id == rhs.id
+  }
+}
+
+extension Product: Hashable {
+  public var hashValue: Int {
+    return id.hashValue
+  }
+}
