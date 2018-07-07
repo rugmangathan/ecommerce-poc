@@ -347,3 +347,85 @@ class MockLocalRepository: LocalRepository, Cuckoo.ProtocolMock {
     
 }
 
+
+import Cuckoo
+@testable import ecommerce_poc
+
+import Foundation
+import ecommerce_poc
+
+class MockSpyableCategoriesView: SpyableCategoriesView, Cuckoo.ClassMock {
+    typealias MocksType = SpyableCategoriesView
+    typealias Stubbing = __StubbingProxy_SpyableCategoriesView
+    typealias Verification = __VerificationProxy_SpyableCategoriesView
+    let cuckoo_manager = Cuckoo.MockManager(hasParent: true)
+
+    
+
+    
+
+    
+    // ["name": "showProgress", "returnSignature": "", "fullyQualifiedName": "showProgress(_: Bool)", "parameterSignature": "_ show: Bool", "parameterSignatureWithoutNames": "show: Bool", "inputTypes": "Bool", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "show", "call": "show", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "show", type: "Bool", range: CountableRange(279..<291), nameRange: CountableRange(0..<0))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+     override func showProgress(_ show: Bool)  {
+        
+            return cuckoo_manager.call("showProgress(_: Bool)",
+                parameters: (show),
+                superclassCall:
+                    
+                    super.showProgress(show)
+                    )
+        
+    }
+    
+
+	struct __StubbingProxy_SpyableCategoriesView: Cuckoo.StubbingProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	
+	    init(manager: Cuckoo.MockManager) {
+	        self.cuckoo_manager = manager
+	    }
+	    
+	    
+	    func showProgress<M1: Cuckoo.Matchable>(_ show: M1) -> Cuckoo.ClassStubNoReturnFunction<(Bool)> where M1.MatchedType == Bool {
+	        let matchers: [Cuckoo.ParameterMatcher<(Bool)>] = [wrap(matchable: show) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockSpyableCategoriesView.self, method: "showProgress(_: Bool)", parameterMatchers: matchers))
+	    }
+	    
+	}
+
+	struct __VerificationProxy_SpyableCategoriesView: Cuckoo.VerificationProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	    private let callMatcher: Cuckoo.CallMatcher
+	    private let sourceLocation: Cuckoo.SourceLocation
+	
+	    init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	        self.cuckoo_manager = manager
+	        self.callMatcher = callMatcher
+	        self.sourceLocation = sourceLocation
+	    }
+	
+	    
+	
+	    
+	    @discardableResult
+	    func showProgress<M1: Cuckoo.Matchable>(_ show: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == Bool {
+	        let matchers: [Cuckoo.ParameterMatcher<(Bool)>] = [wrap(matchable: show) { $0 }]
+	        return cuckoo_manager.verify("showProgress(_: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	}
+
+}
+
+ class SpyableCategoriesViewStub: SpyableCategoriesView {
+    
+
+    
+
+    
+     override func showProgress(_ show: Bool)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+}
+

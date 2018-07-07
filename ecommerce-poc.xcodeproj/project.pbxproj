@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		A4E716CA2F87D48AD136CFCB /* Pods_ecommerce_poc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00139487785828C5D8A40EEF /* Pods_ecommerce_poc.framework */; };
 		DD1518327D199F7CC24DDADF /* Pods_ecommerce_pocTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B074C2A489DFF9FDCFB8319B /* Pods_ecommerce_pocTests.framework */; };
+		F40A0B8320F09296000D7CBF /* CategoriesViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40A0B8220F09296000D7CBF /* CategoriesViewRenderer.swift */; };
 		F43F468820F0851C00ABC9BA /* CategoryDiffUtilCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F468720F0851C00ABC9BA /* CategoryDiffUtilCallback.swift */; };
+		F43F468C20F0900800ABC9BA /* CategoriesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F468B20F0900800ABC9BA /* CategoriesViewTests.swift */; };
+		F43F469020F090A800ABC9BA /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F468F20F090A800ABC9BA /* CategoriesView.swift */; };
+		F43F469220F0916600ABC9BA /* SpyableCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43F469120F0916600ABC9BA /* SpyableCategoriesView.swift */; };
 		F4406ED020EF4C6900A9E8E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406ECF20EF4C6900A9E8E5 /* AppDelegate.swift */; };
 		F4406ED220EF4C6A00A9E8E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406ED120EF4C6A00A9E8E5 /* ViewController.swift */; };
 		F4406ED520EF4C6A00A9E8E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4406ED320EF4C6A00A9E8E5 /* Main.storyboard */; };
@@ -57,7 +61,11 @@
 		5DB836B8BD43EFA0BEB3ADB4 /* Pods-ecommerce-poc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommerce-poc.release.xcconfig"; path = "Pods/Target Support Files/Pods-ecommerce-poc/Pods-ecommerce-poc.release.xcconfig"; sourceTree = "<group>"; };
 		B074C2A489DFF9FDCFB8319B /* Pods_ecommerce_pocTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecommerce_pocTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6855FD5430E14CBD047724 /* Pods-ecommerce-pocTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommerce-pocTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ecommerce-pocTests/Pods-ecommerce-pocTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F40A0B8220F09296000D7CBF /* CategoriesViewRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewRenderer.swift; sourceTree = "<group>"; };
 		F43F468720F0851C00ABC9BA /* CategoryDiffUtilCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDiffUtilCallback.swift; sourceTree = "<group>"; };
+		F43F468B20F0900800ABC9BA /* CategoriesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewTests.swift; sourceTree = "<group>"; };
+		F43F468F20F090A800ABC9BA /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		F43F469120F0916600ABC9BA /* SpyableCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyableCategoriesView.swift; sourceTree = "<group>"; };
 		F4406ECC20EF4C6900A9E8E5 /* ecommerce-poc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ecommerce-poc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4406ECF20EF4C6900A9E8E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4406ED120EF4C6A00A9E8E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +265,8 @@
 				F43F468620F084F800ABC9BA /* Diff */,
 				F49E96CF20EFD3DF008781F9 /* CategoriesModel.swift */,
 				F49E96D120EFD3EB008781F9 /* CategoriesState.swift */,
+				F43F468F20F090A800ABC9BA /* CategoriesView.swift */,
+				F40A0B8220F09296000D7CBF /* CategoriesViewRenderer.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -265,6 +275,8 @@
 			isa = PBXGroup;
 			children = (
 				F49E96CD20EFD349008781F9 /* CategoriesModelTests.swift */,
+				F43F468B20F0900800ABC9BA /* CategoriesViewTests.swift */,
+				F43F469120F0916600ABC9BA /* SpyableCategoriesView.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -481,7 +493,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/ecommerce-pocTests/Mock/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n${PODS_ROOT}/Cuckoo/run generate --no-header --no-timestamp --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/ecommerce-poc/Api/CommonApi.swift\" \\\n\"$INPUT_DIR/ecommerce-poc/Storage/LocalRepository.swift\" \\\n\"$INPUT_DIR/ecommerce-poc/Storage/CachedRepository.swift\" \\\n# ... and so forth\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/ecommerce-pocTests/Mock/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n${PODS_ROOT}/Cuckoo/run generate --no-header --no-timestamp --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/ecommerce-poc/Api/CommonApi.swift\" \\\n\"$INPUT_DIR/ecommerce-poc/Storage/LocalRepository.swift\" \\\n\"$INPUT_DIR/ecommerce-poc/Storage/CachedRepository.swift\" \\\n\"$INPUT_DIR/ecommerce-pocTests/Categories/SpyableCategoriesView.swift\" \\\n# ... and so forth\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -498,6 +510,7 @@
 				F49E96C620EFD0DE008781F9 /* CategoryDao.swift in Sources */,
 				F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */,
 				F4406EFA20EF5C1D00A9E8E5 /* MviLifecycle.swift in Sources */,
+				F43F469020F090A800ABC9BA /* CategoriesView.swift in Sources */,
 				F49E96D220EFD3EB008781F9 /* CategoriesState.swift in Sources */,
 				F4406F0120EF614000A9E8E5 /* FetchEvent.swift in Sources */,
 				F43F468820F0851C00ABC9BA /* CategoryDiffUtilCallback.swift in Sources */,
@@ -510,6 +523,7 @@
 				F49E96D020EFD3DF008781F9 /* CategoriesModel.swift in Sources */,
 				F49E96C820EFD21C008781F9 /* LocalRepository.swift in Sources */,
 				F4406EFD20EF5CCF00A9E8E5 /* ProductsModel.swift in Sources */,
+				F40A0B8320F09296000D7CBF /* CategoriesViewRenderer.swift in Sources */,
 				F49E96C420EFBC65008781F9 /* Variant.swift in Sources */,
 				F4406F0620EF61FB00A9E8E5 /* RemoteProduct.swift in Sources */,
 				F49E96BD20EF99C6008781F9 /* LocalCategory.swift in Sources */,
@@ -520,7 +534,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F43F468C20F0900800ABC9BA /* CategoriesViewTests.swift in Sources */,
 				F4406EE520EF4C6B00A9E8E5 /* ProductsModelTests.swift in Sources */,
+				F43F469220F0916600ABC9BA /* SpyableCategoriesView.swift in Sources */,
 				F49E96C020EFA0EB008781F9 /* GeneratedMocks.swift in Sources */,
 				F49E96CE20EFD349008781F9 /* CategoriesModelTests.swift in Sources */,
 			);
