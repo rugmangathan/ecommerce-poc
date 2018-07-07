@@ -389,6 +389,18 @@ class MockSpyableCategoriesView: SpyableCategoriesView, Cuckoo.ClassMock {
         
     }
     
+    // ["name": "showCategories", "returnSignature": "", "fullyQualifiedName": "showCategories(_: [LocalCategory])", "parameterSignature": "_ categories: [LocalCategory]", "parameterSignatureWithoutNames": "categories: [LocalCategory]", "inputTypes": "[LocalCategory]", "isThrowing": false, "isInit": false, "isOverriding": true, "hasClosureParams": false, "@type": "ClassMethod", "accessibility": "", "parameterNames": "categories", "call": "categories", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "categories", type: "[LocalCategory]", range: CountableRange(365..<394), nameRange: CountableRange(0..<0))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ClassStubNoReturnFunction"]
+     override func showCategories(_ categories: [LocalCategory])  {
+        
+            return cuckoo_manager.call("showCategories(_: [LocalCategory])",
+                parameters: (categories),
+                superclassCall:
+                    
+                    super.showCategories(categories)
+                    )
+        
+    }
+    
 
 	struct __StubbingProxy_SpyableCategoriesView: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
@@ -406,6 +418,11 @@ class MockSpyableCategoriesView: SpyableCategoriesView, Cuckoo.ClassMock {
 	    func showFetchFailedMessgae<M1: Cuckoo.Matchable>(_ show: M1) -> Cuckoo.ClassStubNoReturnFunction<(Bool)> where M1.MatchedType == Bool {
 	        let matchers: [Cuckoo.ParameterMatcher<(Bool)>] = [wrap(matchable: show) { $0 }]
 	        return .init(stub: cuckoo_manager.createStub(for: MockSpyableCategoriesView.self, method: "showFetchFailedMessgae(_: Bool)", parameterMatchers: matchers))
+	    }
+	    
+	    func showCategories<M1: Cuckoo.Matchable>(_ categories: M1) -> Cuckoo.ClassStubNoReturnFunction<([LocalCategory])> where M1.MatchedType == [LocalCategory] {
+	        let matchers: [Cuckoo.ParameterMatcher<([LocalCategory])>] = [wrap(matchable: categories) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockSpyableCategoriesView.self, method: "showCategories(_: [LocalCategory])", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -436,6 +453,12 @@ class MockSpyableCategoriesView: SpyableCategoriesView, Cuckoo.ClassMock {
 	        return cuckoo_manager.verify("showFetchFailedMessgae(_: Bool)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
+	    @discardableResult
+	    func showCategories<M1: Cuckoo.Matchable>(_ categories: M1) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == [LocalCategory] {
+	        let matchers: [Cuckoo.ParameterMatcher<([LocalCategory])>] = [wrap(matchable: categories) { $0 }]
+	        return cuckoo_manager.verify("showCategories(_: [LocalCategory])", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
 	}
 
 }
@@ -451,6 +474,10 @@ class MockSpyableCategoriesView: SpyableCategoriesView, Cuckoo.ClassMock {
     }
     
      override func showFetchFailedMessgae(_ show: Bool)  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
+     override func showCategories(_ categories: [LocalCategory])  {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     

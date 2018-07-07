@@ -32,6 +32,7 @@ class CategoriesViewTests: XCTestCase {
     // Verify
     verify(view, times(1)).showProgress(any())
     verify(view, never()).showFetchFailedMessgae(any())
+    verify(view, never()).showCategories(any())
   }
 
   func test_renderFetchFailedState() {
@@ -42,7 +43,24 @@ class CategoriesViewTests: XCTestCase {
     renderer.render(state)
 
     // Verify
+    verify(view, times(1)).showProgress(any())
     verify(view, times(1)).showFetchFailedMessgae(any())
-    verify(view, never()).showProgress(any())
+    verify(view, never()).showCategories(any())
+  }
+
+  func test_renderFetchSuccessfulState() {
+    // Setup
+    let categories = [
+      LocalCategory(1, "Apple", nil)
+    ]
+    let state = CategoriesState(.fetchSuccessful, categories)
+
+    // Events
+    renderer.render(state)
+
+    // Verify
+    verify(view, times(1)).showProgress(any())
+    verify(view, times(1)).showCategories(any())
+    verify(view, never()).showFetchFailedMessgae(any())
   }
 }

@@ -16,10 +16,15 @@ class CategoriesViewRenderer {
   }
 
   func render(_ state: CategoriesState) {
-    if state.fetchAction == .inFlight {
+    switch state.fetchAction {
+    case .inFlight:
       view.showProgress(true)
-    } else {
+    case .fetchFailed:
+      view.showProgress(false)
       view.showFetchFailedMessgae(true)
+    case .fetchSuccessful:
+      view.showProgress(false)
+      view.showCategories(state.categories)
     }
   }
 }

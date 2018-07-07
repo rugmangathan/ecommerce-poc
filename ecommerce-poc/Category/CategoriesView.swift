@@ -10,4 +10,5 @@ import Foundation
 protocol CategoriesView {
   func showProgress(_ show: Bool)
   func showFetchFailedMessgae(_ show: Bool)
+  func showCategories(_ categories: [LocalCategory])
 }
