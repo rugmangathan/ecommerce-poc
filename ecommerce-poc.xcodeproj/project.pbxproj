@@ -34,6 +34,10 @@
 		F4406F0620EF61FB00A9E8E5 /* RemoteProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0520EF61FB00A9E8E5 /* RemoteProduct.swift */; };
 		F4406F0820EF62FB00A9E8E5 /* RemoteVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0720EF62FB00A9E8E5 /* RemoteVariant.swift */; };
 		F4406F0D20EF77CB00A9E8E5 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4406F0C20EF77CB00A9E8E5 /* ProductsResponse.swift */; };
+		F442A10B20F1E64A0068D640 /* LocalRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442A10A20F1E64A0068D640 /* LocalRank.swift */; };
+		F442A10D20F1E9BC0068D640 /* RankDiffUtilCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442A10C20F1E9BC0068D640 /* RankDiffUtilCallback.swift */; };
+		F442A10F20F1EB510068D640 /* RankDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442A10E20F1EB510068D640 /* RankDao.swift */; };
+		F442A11120F1F2710068D640 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442A11020F1F2710068D640 /* Ranking.swift */; };
 		F49E96B620EF9186008781F9 /* MasterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96B520EF9186008781F9 /* MasterRepository.swift */; };
 		F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96B720EF92C2008781F9 /* StorageModule.swift */; };
 		F49E96C020EFA0EB008781F9 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */; };
@@ -95,6 +99,10 @@
 		F4406F0520EF61FB00A9E8E5 /* RemoteProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteProduct.swift; sourceTree = "<group>"; };
 		F4406F0720EF62FB00A9E8E5 /* RemoteVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteVariant.swift; sourceTree = "<group>"; };
 		F4406F0C20EF77CB00A9E8E5 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
+		F442A10A20F1E64A0068D640 /* LocalRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRank.swift; sourceTree = "<group>"; };
+		F442A10C20F1E9BC0068D640 /* RankDiffUtilCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDiffUtilCallback.swift; sourceTree = "<group>"; };
+		F442A10E20F1EB510068D640 /* RankDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDao.swift; sourceTree = "<group>"; };
+		F442A11020F1F2710068D640 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		F49E96B520EF9186008781F9 /* MasterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterRepository.swift; sourceTree = "<group>"; };
 		F49E96B720EF92C2008781F9 /* StorageModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModule.swift; sourceTree = "<group>"; };
 		F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
@@ -164,6 +172,7 @@
 			children = (
 				F416AC7620F0EE5900451B65 /* ProductDiffUtilCallback.swift */,
 				F416AC7A20F0F52E00451B65 /* VariantDiffUtilCallback.swift */,
+				F442A10C20F1E9BC0068D640 /* RankDiffUtilCallback.swift */,
 			);
 			path = Diff;
 			sourceTree = "<group>";
@@ -260,6 +269,8 @@
 				F4406F0C20EF77CB00A9E8E5 /* ProductsResponse.swift */,
 				F49E96C120EFB3D0008781F9 /* Product.swift */,
 				F49E96C320EFBC65008781F9 /* Variant.swift */,
+				F442A11020F1F2710068D640 /* Ranking.swift */,
+				F442A10A20F1E64A0068D640 /* LocalRank.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -275,6 +286,7 @@
 				F49E96D420EFD691008781F9 /* GrdbRepository.swift */,
 				F416AC7820F0EFCA00451B65 /* ProductDao.swift */,
 				F416AC7C20F0FB3A00451B65 /* VariantDao.swift */,
+				F442A10E20F1EB510068D640 /* RankDao.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -534,8 +546,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4406F0D20EF77CB00A9E8E5 /* ProductsResponse.swift in Sources */,
+				F442A10B20F1E64A0068D640 /* LocalRank.swift in Sources */,
 				F49E96D520EFD691008781F9 /* GrdbRepository.swift in Sources */,
 				F49E96C220EFB3D0008781F9 /* Product.swift in Sources */,
+				F442A10D20F1E9BC0068D640 /* RankDiffUtilCallback.swift in Sources */,
+				F442A10F20F1EB510068D640 /* RankDao.swift in Sources */,
 				F4406ED020EF4C6900A9E8E5 /* AppDelegate.swift in Sources */,
 				F49E96C620EFD0DE008781F9 /* CategoryDao.swift in Sources */,
 				F416AC7420F0E98700451B65 /* RemoteCategory.swift in Sources */,
@@ -553,6 +568,7 @@
 				F49E96D720EFDB9A008781F9 /* CachedRepository.swift in Sources */,
 				F416AC7720F0EE5900451B65 /* ProductDiffUtilCallback.swift in Sources */,
 				F4406F0820EF62FB00A9E8E5 /* RemoteVariant.swift in Sources */,
+				F442A11120F1F2710068D640 /* Ranking.swift in Sources */,
 				F416AC7D20F0FB3A00451B65 /* VariantDao.swift in Sources */,
 				F4D4B90320EF7D6A007F836E /* CommonApi.swift in Sources */,
 				F416AC7320F0E98700451B65 /* LocalCategory.swift in Sources */,

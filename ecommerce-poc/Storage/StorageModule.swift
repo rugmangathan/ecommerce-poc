@@ -45,6 +45,14 @@ struct StorageModule {
         t.column(Column.price, .integer).notNull()
         t.column(Column.productId, .integer).notNull()
       }
+
+      try db.create(table: LocalRank.databaseTableName) { t in
+        typealias Column = LocalRank.Column
+        t.column(Column.id, .integer).primaryKey()
+        t.column(Column.viewCount, .integer)
+        t.column(Column.orderCount, .integer)
+        t.column(Column.shares, .integer)
+      }
     }
     return migrator
   }

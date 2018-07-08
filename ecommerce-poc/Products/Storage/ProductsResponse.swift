@@ -10,6 +10,7 @@ import Foundation
 
 struct ProductsResponse: Decodable {
   let categories: [RemoteCategory]
+  let rankings: [Ranking]
 
   func toCategories() -> [LocalCategory] {
     var localCategories = [LocalCategory]()

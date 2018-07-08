@@ -19,6 +19,10 @@ class MasterRepository {
     return VariantDao(dbQueue)
   }()
 
+  private lazy var rankDao: RankDao = {
+    return RankDao(dbQueue)
+  }()
+
   init(_ categoryDao: CategoryDao,
        _ productDao: ProductDao,
        _ commonApi: CommonApiProtocol) {
@@ -39,8 +43,11 @@ extension MasterRepository: CachedRepository {
         let categories = categoriesResponse.toCategories().sorted(by: { $0.id < $1.id })
         let products = categoriesResponse.toProducts().sorted(by: { $0.id < $1.id })
         let variants = categoriesResponse.toVariants().sorted(by: { $0.id < $1.id })
+        let ranks = self.getLocalRanks(categoriesResponse.rankings).sorted(by: { $0.id < $1.id })
+
         self.diffAndUpdateCachedProducts(products)
         self.diffAndUpdateCachedVariants(variants)
+        self.diffAndUpdateCachedRanks(ranks)
         return self.diffAndUpdateCachedCategories(categories)
           .flatMapLatest { _ in
             self.categoryDao
@@ -67,6 +74,48 @@ extension MasterRepository: CachedRepository {
 
   func getProducts() -> Observable<FetchEvent<[RemoteCategory]>> {
     return Observable.just(FetchEvent(fetchAction: .fetchFailed, result: nil))
+  }
+
+  private func getLocalRanks(_ rankings: [Ranking]) -> [LocalRank] {
+    var localRanks = [LocalRank]()
+    _ = rankings.map { ranking  in
+      localRanks += ranking.products.compactMap { $0 }
+    }
+    var uniqueElements = Array(Set(localRanks))
+
+    _ = rankings.map { rank in
+      switch rank.ranking {
+      case .view:
+        _ = rank.products.map { product in
+          uniqueElements = uniqueElements.map { unique in
+            if unique.id == product.id {
+              unique.viewCount = product.viewCount
+            }
+            return unique
+          }
+        }
+      case .order:
+        _ = rank.products.map { product in
+          uniqueElements = uniqueElements.map { unique in
+            if unique.id == product.id {
+              unique.orderCount = product.orderCount
+            }
+            return unique
+          }
+        }
+      case .share:
+        _ = rank.products.map { product in
+          uniqueElements = uniqueElements.map { unique in
+            if unique.id == product.id {
+              unique.shares = product.shares
+            }
+            return unique
+          }
+        }
+      }
+    }
+
+    return uniqueElements
   }
 
   private func diffAndUpdateCachedProducts(_ remoteProducts: [Product]) {
@@ -137,6 +186,29 @@ extension MasterRepository: CachedRepository {
       _ = deletedVariants.map { variantDao.delete($0.id) }
     } catch let error {
       fatalError("Diff and update variant to db failed \(error.localizedDescription)")
+    }
+  }
+
+  private func diffAndUpdateCachedRanks(_ remoteRanks: [LocalRank]) {
+    do {
+      let cachedRanks = try rankDao
+        .getAll()
+        .toBlocking()
+        .first()!
+
+      let diffCallback = RankDiffUtilCallback(cachedRanks, remoteRanks)
+      let newRanks = diffCallback.newlyInsertedRanks()
+      let deletedRanks = diffCallback.deletedRanks()
+      let updatedRanks = diffCallback.updatedRanks()
+
+      if !newRanks.isEmpty {
+        rankDao.insertAll(newRanks)
+      }
+
+      _ = updatedRanks.map { rankDao.update($0) }
+      _ = deletedRanks.map { rankDao.delete($0.id) }
+    } catch let error {
+      fatalError("Diff and update products to db failed \(error.localizedDescription)")
     }
   }
 }
