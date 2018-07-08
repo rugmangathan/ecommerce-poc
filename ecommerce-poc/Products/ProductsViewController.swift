@@ -21,9 +21,14 @@ class ProductsViewController: MviController<ProductsState> {
   
   var categoryId: Int!
   private let allCategory = "All"
+  private let ranks = [Rank.all.rawValue.capitalized,
+                       Rank.view.rawValue,
+                       Rank.order.rawValue,
+                       Rank.share.rawValue]
 
   private let categoryRelay = PublishRelay<Int>()
   private let subCategoryRelay = PublishRelay<Int>()
+  private let orderByRelay = PublishRelay<String>()
   private var subCategories: SubCategoriesDictionary = SubCategoriesDictionary()
   private var categories: CategoriesDictionary = CategoriesDictionary()
   private lazy var repository: LocalRepository = {
@@ -57,6 +62,11 @@ class ProductsViewController: MviController<ProductsState> {
     _ = disposables.insert(subCategoryButton.rx.tap
       .subscribe(onNext: { _ in
         self.subCategoriesTap()
+      }))
+
+    _ = disposables.insert(orderByButton.rx.tap
+      .subscribe(onNext: { _ in
+        self.orderByTap()
       }))
   }
 
@@ -93,6 +103,24 @@ class ProductsViewController: MviController<ProductsState> {
       .map { $0.name }
     sortedSubCategories.insert(allCategory, at: 0)
     animateAndShowSubCategories(sortedSubCategories)
+  }
+
+  @objc private func orderByTap() {
+    let selectedIndex: Int = ranks.index(of: orderByButton.title(for: .normal)!)!
+    createPickerWith([ranks], selectedIndex)
+      .show { selections in
+        guard let rank = selections[0] else {
+          fatalError("'selections' should not be nil.")
+        }
+
+        let selectedRank = self.ranks
+          .first { $0 == rank }
+
+        guard let validRank = selectedRank else {
+          fatalError("'selectedCategory' should not be nil.")
+        }
+        self.orderByRelay.accept(validRank)
+    }
   }
 
   private func animateAndShowCategoris(_ displayNames: [String]) {
