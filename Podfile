@@ -8,6 +8,7 @@ target 'ecommerce-poc' do
   pod 'RxGRDB', '= 0.11.0'
   pod 'RxBlocking', '= 4.1.2'
   pod 'Differ', '= 1.2.3'
+  pod 'McPicker', '= 1.0.0'
 
   target 'ecommerce-pocTests' do
     pod 'RxTest', '= 4.1.2'
