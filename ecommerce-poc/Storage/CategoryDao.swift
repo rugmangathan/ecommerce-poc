@@ -75,4 +75,27 @@ class CategoryDao {
       fatalError("Couldn't delete the categories: \(error)")
     }
   }
+
+  func getCategories(_ categoryId: Int) -> Observable<[LocalCategory]> {
+    let request = LocalCategory.filter(Column(LocalCategory.Column.parent) == categoryId)
+
+    return request.rx
+      .fetchAll(in: dbQueue)
+      .asObservable()
+  }
+
+  func getSubCategories(_ categoryId: Int) -> Observable<[LocalCategory]> {
+    let request = LocalCategory.filter(categoryId: categoryId)
+    return request.rx
+      .fetchAll(in: dbQueue)
+      .asObservable()
+  }
+}
+
+extension LocalCategory {
+  static func filter(categoryId: Int) -> SQLRequest<LocalCategory> {
+    return SQLRequest<LocalCategory>(
+      "SELECT DISTINCT c1.id, c1.name FROM category c1 WHERE c1.id IN (SELECT c2.id FROM category c2 WHERE c2.parent IN (SELECT c3.id FROM category c3 WHERE c3.parent == ?)) ORDER BY c1.name",
+      arguments: [categoryId])
+  }
 }

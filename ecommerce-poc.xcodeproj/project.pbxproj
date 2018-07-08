@@ -38,6 +38,11 @@
 		F442A10D20F1E9BC0068D640 /* RankDiffUtilCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442A10C20F1E9BC0068D640 /* RankDiffUtilCallback.swift */; };
 		F442A10F20F1EB510068D640 /* RankDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442A10E20F1EB510068D640 /* RankDao.swift */; };
 		F442A11120F1F2710068D640 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442A11020F1F2710068D640 /* Ranking.swift */; };
+		F442F4F820F25E8000F0A6A3 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442F4F520F25E8000F0A6A3 /* ProductsViewController.swift */; };
+		F442F4F920F25E8000F0A6A3 /* ProductsIntentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442F4F620F25E8000F0A6A3 /* ProductsIntentions.swift */; };
+		F442F4FA20F25E8000F0A6A3 /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442F4F720F25E8000F0A6A3 /* ProductsView.swift */; };
+		F442F4FC20F25EFF00F0A6A3 /* ProductsDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442F4FB20F25EFF00F0A6A3 /* ProductsDatasource.swift */; };
+		F442F4FE20F286B000F0A6A3 /* ProductsViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442F4FD20F286B000F0A6A3 /* ProductsViewRenderer.swift */; };
 		F49E96B620EF9186008781F9 /* MasterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96B520EF9186008781F9 /* MasterRepository.swift */; };
 		F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96B720EF92C2008781F9 /* StorageModule.swift */; };
 		F49E96C020EFA0EB008781F9 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */; };
@@ -103,6 +108,11 @@
 		F442A10C20F1E9BC0068D640 /* RankDiffUtilCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDiffUtilCallback.swift; sourceTree = "<group>"; };
 		F442A10E20F1EB510068D640 /* RankDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDao.swift; sourceTree = "<group>"; };
 		F442A11020F1F2710068D640 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
+		F442F4F520F25E8000F0A6A3 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		F442F4F620F25E8000F0A6A3 /* ProductsIntentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsIntentions.swift; sourceTree = "<group>"; };
+		F442F4F720F25E8000F0A6A3 /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
+		F442F4FB20F25EFF00F0A6A3 /* ProductsDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDatasource.swift; sourceTree = "<group>"; };
+		F442F4FD20F286B000F0A6A3 /* ProductsViewRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewRenderer.swift; sourceTree = "<group>"; };
 		F49E96B520EF9186008781F9 /* MasterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterRepository.swift; sourceTree = "<group>"; };
 		F49E96B720EF92C2008781F9 /* StorageModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModule.swift; sourceTree = "<group>"; };
 		F49E96BF20EFA0EB008781F9 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
@@ -208,10 +218,10 @@
 		F4406ECE20EF4C6900A9E8E5 /* ecommerce-poc */ = {
 			isa = PBXGroup;
 			children = (
-				F49E96C920EFD2D5008781F9 /* Category */,
 				F49E96AE20EF8E8D008781F9 /* Storage */,
 				F4D4B90120EF7D6A007F836E /* Api */,
 				F4406EF820EF5BE500A9E8E5 /* Common */,
+				F49E96C920EFD2D5008781F9 /* Category */,
 				F4406EFB20EF5C7400A9E8E5 /* Products */,
 				F4406ECF20EF4C6900A9E8E5 /* AppDelegate.swift */,
 				F4406ED320EF4C6A00A9E8E5 /* Main.storyboard */,
@@ -256,7 +266,12 @@
 				F416AC7520F0EE3E00451B65 /* Diff */,
 				F4406F0420EF61EE00A9E8E5 /* Storage */,
 				F4406EFC20EF5CCF00A9E8E5 /* ProductsModel.swift */,
+				F442F4FB20F25EFF00F0A6A3 /* ProductsDatasource.swift */,
 				F4406EFE20EF5D8C00A9E8E5 /* ProductsState.swift */,
+				F442F4F520F25E8000F0A6A3 /* ProductsViewController.swift */,
+				F442F4F620F25E8000F0A6A3 /* ProductsIntentions.swift */,
+				F442F4F720F25E8000F0A6A3 /* ProductsView.swift */,
+				F442F4FD20F286B000F0A6A3 /* ProductsViewRenderer.swift */,
 			);
 			path = Products;
 			sourceTree = "<group>";
@@ -556,6 +571,7 @@
 				F4406ED020EF4C6900A9E8E5 /* AppDelegate.swift in Sources */,
 				F49E96C620EFD0DE008781F9 /* CategoryDao.swift in Sources */,
 				F416AC7420F0E98700451B65 /* RemoteCategory.swift in Sources */,
+				F442F4F820F25E8000F0A6A3 /* ProductsViewController.swift in Sources */,
 				F49E96B820EF92C2008781F9 /* StorageModule.swift in Sources */,
 				F4406EFA20EF5C1D00A9E8E5 /* MviLifecycle.swift in Sources */,
 				F416AC7B20F0F52E00451B65 /* VariantDiffUtilCallback.swift in Sources */,
@@ -572,6 +588,7 @@
 				F4406F0820EF62FB00A9E8E5 /* RemoteVariant.swift in Sources */,
 				F442A11120F1F2710068D640 /* Ranking.swift in Sources */,
 				F416AC7D20F0FB3A00451B65 /* VariantDao.swift in Sources */,
+				F442F4FE20F286B000F0A6A3 /* ProductsViewRenderer.swift in Sources */,
 				F4D4B90320EF7D6A007F836E /* CommonApi.swift in Sources */,
 				F416AC7320F0E98700451B65 /* LocalCategory.swift in Sources */,
 				F49E96D020EFD3DF008781F9 /* CategoriesModel.swift in Sources */,
@@ -580,6 +597,9 @@
 				F40A0B8320F09296000D7CBF /* CategoriesViewRenderer.swift in Sources */,
 				F49E96C420EFBC65008781F9 /* Variant.swift in Sources */,
 				F416AC6F20F0DDBE00451B65 /* MviController.swift in Sources */,
+				F442F4FA20F25E8000F0A6A3 /* ProductsView.swift in Sources */,
+				F442F4F920F25E8000F0A6A3 /* ProductsIntentions.swift in Sources */,
+				F442F4FC20F25EFF00F0A6A3 /* ProductsDatasource.swift in Sources */,
 				F4406F0620EF61FB00A9E8E5 /* RemoteProduct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

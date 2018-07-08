@@ -8,12 +8,12 @@
 
 import Foundation
 
-class ProductsState: Equatable {
+class ProductsState: MviState {
   var fetchAction: FetchAction
-  var products: [RemoteCategory]
+  var products: [Product]
 
   init(_ fetchAction: FetchAction = .inFlight,
-       _ products: [RemoteCategory] = []) {
+       _ products: [Product] = []) {
     self.fetchAction = fetchAction
     self.products = products
   }

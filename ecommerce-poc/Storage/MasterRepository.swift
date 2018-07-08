@@ -112,6 +112,7 @@ extension MasterRepository: CachedRepository {
             return unique
           }
         }
+      default: break
       }
     }
 

@@ -9,6 +9,7 @@
 import Foundation
 
 enum Rank: String, Decodable {
+  case all
   case view =  "Most Viewed Products"
   case order = "Most OrdeRed Products"
   case share = "Most ShaRed Products"

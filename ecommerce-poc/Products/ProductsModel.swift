@@ -10,16 +10,18 @@ import RxSwift
 
 class ProductsModel {
   class func bind(_ lifecycle: Observable<MviLifecycle>,
-                  _ commonApi: CommonApiProtocol) -> Observable<ProductsState> {
+                  _ categoryId: Int,
+                  _ localRepository: LocalRepository) -> Observable<ProductsState> {
     let initialState = ProductsState()
     let lifecycleStates = lifecycle
       .filter { $0 == .created }
       .flatMapLatest { _ in
-        return commonApi
-          .retrieveProducts().flatMapLatest { (response:ProductsResponse) -> Observable<ProductsState> in
+        return localRepository
+          .getProduts(categoryId)
+          .flatMapLatest { products -> Observable<ProductsState> in
             let copiedState = ProductsState(initialState)
             copiedState.fetchAction = .fetchSuccessful
-            copiedState.products = response.categories
+            copiedState.products = products
             return Observable.of(copiedState)
           }
     }

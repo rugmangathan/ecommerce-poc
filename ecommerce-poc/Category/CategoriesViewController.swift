@@ -44,6 +44,21 @@ class CategoriesViewController: MviController<CategoriesState> {
       .disposed(by: disposeBag)
   }
 
+  override func setup() {
+    categoriesTableView.rx.itemSelected
+      .subscribe(onNext: { [weak self] indexPath in
+        guard let strongSelf = self else { return }
+        let productsView = strongSelf
+          .storyboard?
+          .instantiateViewController(withIdentifier: "ProductsViewController")
+          as! ProductsViewController
+
+        productsView.categoryId = strongSelf.categories.value[indexPath.row].id
+        strongSelf.navigationController?
+          .pushViewController(productsView, animated: true)
+      })
+  }
+
   override func bind(states: Observable<CategoriesState>) -> Observable<CategoriesState> {
     return CategoriesModel
       .bind(lifecycle.asObservable(), repository, states)
