@@ -7,7 +7,20 @@
 		<key>ecommerce-poc.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>F4406ECB20EF4C6900A9E8E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F4406EDF20EF4C6B00A9E8E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
