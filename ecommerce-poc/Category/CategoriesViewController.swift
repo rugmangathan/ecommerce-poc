@@ -67,7 +67,7 @@ class CategoriesViewController: MviController<CategoriesState>, UITableViewDataS
       .instantiateViewController(withIdentifier: "ProductsViewController")
       as! ProductsViewController
 
-    productsView.categoryId = categories[indexPath.row].id
+    productsView.category = categories[indexPath.row]
     navigationController?.pushViewController(productsView, animated: true)
   }
 }

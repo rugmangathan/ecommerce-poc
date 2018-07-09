@@ -11,12 +11,15 @@ import RxSwift
 import RxCocoa
 
 class ProductsViewController: MviController<ProductsState>, UITableViewDataSource, UITableViewDelegate {
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var categoryButton: UIButton!
   @IBOutlet weak var subCategoryButton: UIButton!
   @IBOutlet weak var orderByButton: UIButton!
   @IBOutlet weak var productsTableView: UITableView!
+  @IBOutlet weak var noProductsForundView: UIView!
+  @IBOutlet weak var retryButton: UIButton!
   
-  var categoryId: Int!
+  var category: LocalCategory!
   private let allCategory = "All"
   var previousState: ProductsState?
   private var products = [Product]() {
@@ -50,16 +53,17 @@ class ProductsViewController: MviController<ProductsState>, UITableViewDataSourc
   }()
 
   override func preBind() {
+    title = category.name
     _ = disposables
       .insert(ProductsDatasource
-        .getCategories(for: categoryId, from: repository)
+        .getCategories(for: category.id, from: repository)
         .subscribe(onNext: { categoriesDictionary in
           self.categories = categoriesDictionary
         }))
 
     _ = disposables
       .insert(ProductsDatasource
-        .getSubCategories(for: categoryId, from: repository)
+        .getSubCategories(for: category.id, from: repository)
         .subscribe(onNext: { subCategoriesDictionary in
           self.subCategories = subCategoriesDictionary
         }))
@@ -82,7 +86,7 @@ class ProductsViewController: MviController<ProductsState>, UITableViewDataSourc
 
   override func bind(states: Observable<ProductsState>) -> Observable<ProductsState> {
     return ProductsModel
-      .bind(intentions, lifecycle.asObservable(), categoryId, states, repository)
+      .bind(intentions, lifecycle.asObservable(), category.id, states, repository)
   }
 
   override func effects(state: ProductsState) {
@@ -179,7 +183,7 @@ class ProductsViewController: MviController<ProductsState>, UITableViewDataSourc
     picker.toolbarBarTintColor = UIColor.darkGray
 
     let label = UILabel()
-    label.textColor = .gray
+    label.textColor = UIColor.lightGray
     label.textAlignment = .center
     label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
     picker.label = label
@@ -236,7 +240,10 @@ extension ProductsViewController: ProductsView {
   }
 
   func showProgress(_ show: Bool) {
-
+    show
+      ? activityIndicator.startAnimating()
+      : activityIndicator.stopAnimating()
+    activityIndicator.isHidden = !show
   }
 
   func showProducts(_ products: [Product]) {
@@ -244,14 +251,19 @@ extension ProductsViewController: ProductsView {
   }
 
   func showNoProducts(_ show: Bool) {
-    // TODO
+    noProductsForundView.isHidden = !show
+    productsTableView.isHidden = show
   }
 
   func showRetry(_ show: Bool) {
-    // TODO
+    retryButton.isHidden = !show
   }
 
   func showFetchFailedMessage(_ show: Bool) {
-    // TODO
+    let alertView = UIAlertController(title: "Error",
+                                      message: "Something went wrong",
+                                      preferredStyle: .alert)
+    alertView.addAction(UIAlertAction(title: "Ok", style: .default))
+    present(alertView, animated: true)
   }
 }

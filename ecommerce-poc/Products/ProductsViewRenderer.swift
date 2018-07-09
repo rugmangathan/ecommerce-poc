@@ -28,6 +28,7 @@ class ProductsViewRenderer {
       view.showNoProducts(true)
       view.showFetchFailedMessage(true)
     case .fetchSuccessful:
+      view.showProgress(false)
       if !state.products.isEmpty {
         view.showProducts(state.products)
       } else {
