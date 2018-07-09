@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -197,36 +196,19 @@
                                 <rect key="frame" x="0.0" y="128" width="375" height="475"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductsCell" rowHeight="52" id="6ah-lG-uKU" customClass="ProductsCell" customModule="ecommerce_poc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="52"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProductsCell" id="4Tm-o5-Gdr">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6ah-lG-uKU" id="gKO-6J-IiG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Tm-o5-Gdr" id="www-TB-KzU">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="&lt;Product Name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6N-gA-8UF">
-                                                    <rect key="frame" x="15" y="15" width="124.5" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="&lt;Price&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5E-l2-vfo">
-                                                    <rect key="frame" x="303" y="15" width="57" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="1" green="0.49019607840000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="q5E-l2-vfo" firstAttribute="centerY" secondItem="gKO-6J-IiG" secondAttribute="centerY" id="63M-ns-mWd"/>
-                                                <constraint firstItem="A6N-gA-8UF" firstAttribute="leading" secondItem="gKO-6J-IiG" secondAttribute="leadingMargin" id="7Mk-i2-gwF"/>
-                                                <constraint firstItem="A6N-gA-8UF" firstAttribute="centerY" secondItem="gKO-6J-IiG" secondAttribute="centerY" id="7wK-Wi-QxT"/>
-                                                <constraint firstItem="q5E-l2-vfo" firstAttribute="trailing" secondItem="gKO-6J-IiG" secondAttribute="trailingMargin" id="LYA-ep-ruU"/>
-                                                <constraint firstItem="q5E-l2-vfo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="A6N-gA-8UF" secondAttribute="trailing" constant="20" id="ywn-fT-U4t"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="FeQ-DU-znQ" id="XM8-sD-kOd"/>
+                                    <outlet property="delegate" destination="FeQ-DU-znQ" id="RV6-RE-wSa"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -245,6 +227,7 @@
                     <connections>
                         <outlet property="categoryButton" destination="Wf3-Ow-r8x" id="pSI-RE-1U4"/>
                         <outlet property="orderByButton" destination="yAK-eQ-grW" id="JVi-y4-hlg"/>
+                        <outlet property="productsTableView" destination="uCI-RX-0ve" id="l18-Up-f1o"/>
                         <outlet property="subCategoryButton" destination="Wed-eY-jfN" id="OrJ-sC-dzJ"/>
                     </connections>
                 </viewController>

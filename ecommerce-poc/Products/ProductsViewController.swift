@@ -10,17 +10,20 @@ import McPicker
 import RxSwift
 import RxCocoa
 
-class ProductsCell: UITableViewCell {
-  
-}
-
-class ProductsViewController: MviController<ProductsState> {
+class ProductsViewController: MviController<ProductsState>, UITableViewDataSource, UITextViewDelegate {
   @IBOutlet weak var categoryButton: UIButton!
   @IBOutlet weak var subCategoryButton: UIButton!
   @IBOutlet weak var orderByButton: UIButton!
+  @IBOutlet weak var productsTableView: UITableView!
   
   var categoryId: Int!
   private let allCategory = "All"
+  var previousState: ProductsState?
+  private var products = [Product]() {
+    didSet{
+      productsTableView.reloadData()
+    }
+  }
   private let ranks = [Rank.all.rawValue.capitalized,
                        Rank.view.rawValue,
                        Rank.order.rawValue,
@@ -37,6 +40,12 @@ class ProductsViewController: MviController<ProductsState> {
 
   private lazy var renderer: ProductsViewRenderer = {
     return ProductsViewRenderer(self)
+  }()
+
+  private lazy var intentions: ProductsIntentions = {
+    return ProductsIntentions(categoryRelay.asObservable(),
+                              subCategoryRelay.asObservable(),
+                              orderByRelay.asObservable())
   }()
 
   override func preBind() {
@@ -72,7 +81,7 @@ class ProductsViewController: MviController<ProductsState> {
 
   override func bind(states: Observable<ProductsState>) -> Observable<ProductsState> {
     return ProductsModel
-      .bind(lifecycle.asObservable(), categoryId, repository)
+      .bind(intentions, lifecycle.asObservable(), categoryId, states, repository)
   }
 
   override func effects(state: ProductsState) {
@@ -143,7 +152,7 @@ class ProductsViewController: MviController<ProductsState> {
   }
 
   private func animateAndShowSubCategories(_ sortedStatuses: [String]) {
-    let selectedIndex: Int = sortedStatuses.index(of: categoryButton.title(for: .normal)!.capitalized)!
+    let selectedIndex: Int = sortedStatuses.index(of: subCategoryButton.title(for: .normal)!.capitalized)!
     self.createPickerWith([sortedStatuses], selectedIndex)
       .show { selections in
         guard let subCategory = selections[0] else {
@@ -177,7 +186,62 @@ class ProductsViewController: MviController<ProductsState> {
 
     return picker
   }
+
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return products.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ProductsCell", for: indexPath)
+    cell.textLabel?.text = products[indexPath.row].name
+    return cell
+  }
 }
 
 extension ProductsViewController: ProductsView {
+  func setChildCategories(_ childCategories: [LocalCategory]) {
+    var categoriesDictionary = childCategories.reduce(CategoriesDictionary()) { (dictionary, category) in
+      var dictionary = dictionary
+      dictionary[category.id] = category
+      return dictionary
+    }
+    categoriesDictionary[0] = LocalCategory(0, "All", nil)
+    subCategories = categoriesDictionary
+  }
+
+  func setSelectedSubCategory(_ subCategoryKey: Int) {
+    categoryButton.setTitle(categories[subCategoryKey]?.name.capitalized, for: .normal)
+  }
+
+  func setSelectedChildCategory(_ categoryId: Int) {
+    subCategoryButton.setTitle(subCategories[categoryId]?.name.capitalized, for: .normal)
+  }
+
+  func setOrderBy(_ rank: String) {
+    orderByButton.setTitle(rank.capitalized, for: .normal)
+  }
+
+  func showProgress(_ show: Bool) {
+
+  }
+
+  func showProducts(_ products: [Product]) {
+    self.products = products
+  }
+
+  func showNoProducts(_ show: Bool) {
+    // TODO
+  }
+
+  func showRetry(_ show: Bool) {
+    // TODO
+  }
+
+  func showFetchFailedMessage(_ show: Bool) {
+    // TODO
+  }
 }

@@ -34,7 +34,7 @@ class MasterRepository {
 
 extension MasterRepository: CachedRepository {
   func getCategories() -> Observable<FetchEvent<[LocalCategory]>> {
-    let cacheFetches = categoryDao.getCategories()
+    let cacheFetches = categoryDao.getParentCategories()
       .map { FetchEvent(fetchAction: .inFlight, result: $0.isEmpty ? nil : $0) }
       .asObservable()
     let networkFetches = commonApi
@@ -49,9 +49,9 @@ extension MasterRepository: CachedRepository {
         self.diffAndUpdateCachedVariants(variants)
         self.diffAndUpdateCachedRanks(ranks)
         return self.diffAndUpdateCachedCategories(categories)
-          .flatMapLatest { _ in
+          .flatMap { _ in
             self.categoryDao
-              .getCategories()
+              .getParentCategories()
           }
           .map { FetchEvent(fetchAction: .fetchSuccessful, result: $0) }
         .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.background))
@@ -161,7 +161,7 @@ extension MasterRepository: CachedRepository {
       _ = updatedCategories.map { categoryDao.update($0) }
       _ = deletedCategories.map { categoryDao.delete($0.id) }
 
-      return categoryDao.getCategories()
+      return categoryDao.getParentCategories()
     } catch let error {
       fatalError("Diff and update categories to db failed \(error.localizedDescription)")
     }

@@ -9,13 +9,37 @@
 import Foundation
 
 class ProductsViewRenderer {
-  let view: ProductsView
+  var view: ProductsView
 
   init(_ view: ProductsView) {
     self.view = view
   }
 
   func render(_ state: ProductsState) {
+    switch state.fetchAction {
+    case .inFlight:
+      if view.previousState?.fetchAction == .fetchFailed {
+        view.showRetry(false)
+        view.showFetchFailedMessage(false)
+      }
+      view.showProgress(true)
+    case .fetchFailed:
+      view.showProgress(false)
+      view.showNoProducts(true)
+      view.showFetchFailedMessage(true)
+    case .fetchSuccessful:
+      if !state.products.isEmpty {
+        view.showProducts(state.products)
+      } else {
+        view.showNoProducts(true)
+      }
+    }
 
+    view.setSelectedSubCategory(state.subCategoryId)
+    view.setSelectedChildCategory(state.childCategoryId)
+    view.setChildCategories(state.childCategories)
+    view.setOrderBy(state.orderBy)
+
+    view.previousState = state
   }
 }

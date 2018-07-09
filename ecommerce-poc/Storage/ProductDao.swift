@@ -49,12 +49,33 @@ class ProductDao {
       .asObservable()
   }
 
-  func getProducts(with categoryId: Int) -> Observable<[Product]> {
-    let request = Product.filter(Column(Product.Column.categoryId) == categoryId)
+  func getProducts( with categoryId: Int) -> Observable<[Product]> {
+    let request = Product.filter(categoryId: categoryId)
     return request
       .rx
       .fetchAll(in: dbQueue)
       .asObservable()
+  }
+
+  func fillterProductsBy(_ categoryId: Int,
+                         subCategory: Int,
+                         childCategory: Int,
+                         orderBy: Rank) -> Observable<[Product]> {
+    if subCategory == 0 && childCategory == 0{
+      return getProducts(with: categoryId)
+    } else if childCategory == 0 {
+      let request = Product.filter(subCategoryId: subCategory)
+      return request
+        .rx
+        .fetchAll(in: dbQueue)
+        .asObservable()
+    } else {
+      let request = Product.filter(Column(Product.Column.categoryId) == childCategory)
+      return request
+        .rx
+        .fetchAll(in: dbQueue)
+        .asObservable()
+    }
   }
 
   func update(_ product: Product) {
@@ -75,5 +96,19 @@ class ProductDao {
     } catch let error {
       fatalError("Couldn't delete the categories: \(error)")
     }
+  }
+}
+
+extension Product {
+  static func filter(categoryId: Int) -> SQLRequest<Product> {
+    return SQLRequest<Product>(
+      "SELECT * FROM product WHERE product.category_id IN (SELECT c1.id FROM category c1 WHERE c1.parent IN (SELECT c2.id FROM category c2 WHERE c2.parent == ?))",
+      arguments: [categoryId])
+  }
+
+  static func filter(subCategoryId: Int) -> SQLRequest<Product> {
+    return SQLRequest<Product>(
+      "SELECT * FROM product WHERE product.category_id IN (SELECT c1.id FROM category c1 WHERE c1.parent = ?)",
+      arguments: [subCategoryId])
   }
 }

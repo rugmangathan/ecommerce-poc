@@ -48,7 +48,7 @@ class MviController<T: MviState>: UIViewController {
       .distinctUntilChanged { $0 == $1 }
       .asObservable()
 
-    disposables.insert(bind(states: statesObservable)
+    _ = disposables.insert(bind(states: statesObservable)
       .observeOn(MainScheduler.instance)
       .subscribe { event in
         self.stateRelay.accept(event.element)

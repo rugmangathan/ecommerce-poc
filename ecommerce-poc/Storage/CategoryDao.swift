@@ -48,7 +48,7 @@ class CategoryDao {
       .asObservable()
   }
 
-  func getCategories() -> Observable<[LocalCategory]> {
+  func getParentCategories() -> Observable<[LocalCategory]> {
     let request = LocalCategory.filter(Column(LocalCategory.Column.parent) == nil)
     return request
       .rx
@@ -76,7 +76,7 @@ class CategoryDao {
     }
   }
 
-  func getCategories(_ categoryId: Int) -> Observable<[LocalCategory]> {
+  func getSubCategories(_ categoryId: Int) -> Observable<[LocalCategory]> {
     let request = LocalCategory.filter(Column(LocalCategory.Column.parent) == categoryId)
 
     return request.rx
@@ -84,7 +84,7 @@ class CategoryDao {
       .asObservable()
   }
 
-  func getSubCategories(_ categoryId: Int) -> Observable<[LocalCategory]> {
+  func getChildCategories(_ categoryId: Int) -> Observable<[LocalCategory]> {
     let request = LocalCategory.filter(categoryId: categoryId)
     return request.rx
       .fetchAll(in: dbQueue)
