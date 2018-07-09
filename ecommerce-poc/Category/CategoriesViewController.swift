@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class CategoriesViewController: MviController<CategoriesState> {
+class CategoriesViewController: MviController<CategoriesState>, UITableViewDataSource, UITableViewDelegate {
   @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
   @IBOutlet weak var categoriesTableView: UITableView!
   @IBOutlet weak var noCategoriesSuperView: UIView!
@@ -32,31 +32,10 @@ class CategoriesViewController: MviController<CategoriesState> {
     return CategoriesViewRenderer(self)
   }()
 
-  private var categories = Variable<[LocalCategory]>([])
-
-  override func preBind() {
-    categories.asObservable()
-      .bind(to: self.categoriesTableView
-        .rx
-        .items(cellIdentifier: "CategoriesCell")) { (_, category: LocalCategory, cell: UITableViewCell) in
-          cell.textLabel?.text = category.name
-      }
-      .disposed(by: disposeBag)
-  }
-
-  override func setup() {
-    categoriesTableView.rx.itemSelected
-      .subscribe(onNext: { [weak self] indexPath in
-        guard let strongSelf = self else { return }
-        let productsView = strongSelf
-          .storyboard?
-          .instantiateViewController(withIdentifier: "ProductsViewController")
-          as! ProductsViewController
-
-        productsView.categoryId = strongSelf.categories.value[indexPath.row].id
-        strongSelf.navigationController?
-          .pushViewController(productsView, animated: true)
-      })
+  private var categories = [LocalCategory]() {
+    didSet {
+      categoriesTableView.reloadData()
+    }
   }
 
   override func bind(states: Observable<CategoriesState>) -> Observable<CategoriesState> {
@@ -67,7 +46,32 @@ class CategoriesViewController: MviController<CategoriesState> {
   override func effects(state: CategoriesState) {
     renderer.render(state)
   }
+
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return categories.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "CategoriesCell", for: indexPath)
+    cell.textLabel?.text = categories[indexPath.row].name
+
+    return cell
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let productsView = storyboard?
+      .instantiateViewController(withIdentifier: "ProductsViewController")
+      as! ProductsViewController
+
+    productsView.categoryId = categories[indexPath.row].id
+    navigationController?.pushViewController(productsView, animated: true)
+  }
 }
+
 
 extension CategoriesViewController: CategoriesView {
   func showProgress(_ show: Bool) {
@@ -88,7 +92,7 @@ extension CategoriesViewController: CategoriesView {
   func showCategories(_ categories: [LocalCategory]) {
     noCategoriesSuperView.isHidden = true
     categoriesTableView.isHidden = false
-    self.categories.value = categories
+    self.categories = categories
   }
 
   func showNoCategories(_ show: Bool) {
