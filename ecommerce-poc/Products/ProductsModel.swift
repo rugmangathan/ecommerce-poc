@@ -32,17 +32,21 @@ class ProductsModel {
 
     let restoredStates = lifecycle
       .filter { $0 == .restored }
-      .flatMapLatest { _ in
-        initialState.flatMap { initialState in
-          return localRepository
-            .getProduts(categoryId, orderBy: initialState.orderBy)
-            .flatMapLatest { products  -> Observable<ProductsState> in
-              let copiedState = ProductsState(initialState)
+      .withLatestFrom(states) { (_, state: ProductsState) -> ProductsState in
+        return state
+      }
+      .flatMapLatest { state -> Observable<ProductsState> in
+        return localRepository
+          .filterProductsBy(categoryId,
+                            state.subCategoryId,
+                            state.childCategoryId,
+                            state.orderBy)
+          .flatMapLatest { fetchEvent -> Observable<ProductsState> in
+              let copiedState = ProductsState(state)
               copiedState.fetchAction = .fetchSuccessful
-              copiedState.products = products
+              copiedState.products = fetchEvent.result ?? []
               return Observable.just(copiedState)
           }
-        }
     }
 
     let categoryFilterStates = states
@@ -125,12 +129,13 @@ class ProductsModel {
     return repository
       .filterProductsBy(categoryId,
                         subCategoryKey,
-                        state.childCategoryId,
+                        0,
                         state.orderBy)
       .flatMapLatest { fetchEvent -> Observable<ProductsState> in
         let copiedState = ProductsState(state)
         copiedState.fetchAction = .fetchSuccessful
         copiedState.subCategoryId = subCategoryKey
+        copiedState.childCategoryId = state.childCategoryId
         copiedState.products = fetchEvent.result ?? []
         copiedState.childCategories = categories
         return Observable.just(copiedState)

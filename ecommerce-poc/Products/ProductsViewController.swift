@@ -225,6 +225,9 @@ extension ProductsViewController: ProductsView {
     }
     categoriesDictionary[0] = LocalCategory(0, "All", nil)
     subCategories = categoriesDictionary
+    if !subCategories.values.contains(where: { $0.name == subCategoryButton.title(for: .normal)! }) {
+      subCategoryButton.setTitle(allCategory, for: .normal)
+    }
   }
 
   func setSelectedSubCategory(_ subCategoryKey: Int) {
