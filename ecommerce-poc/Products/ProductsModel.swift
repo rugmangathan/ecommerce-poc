@@ -20,7 +20,7 @@ class ProductsModel {
       .flatMapLatest { _ in
         initialState.flatMap { initialState -> Observable<ProductsState> in
           return localRepository
-            .getProduts(categoryId)
+            .getProduts(categoryId, orderBy: initialState.orderBy)
             .map { products -> ProductsState in
               let copiedState = ProductsState(initialState)
               copiedState.fetchAction = .fetchSuccessful
@@ -33,15 +33,15 @@ class ProductsModel {
     let restoredStates = lifecycle
       .filter { $0 == .restored }
       .flatMapLatest { _ in
-        return localRepository
-          .getProduts(categoryId)
-          .flatMap { products  in
-            initialState.map { initialState -> ProductsState in
+        initialState.flatMap { initialState in
+          return localRepository
+            .getProduts(categoryId, orderBy: initialState.orderBy)
+            .flatMapLatest { products  -> Observable<ProductsState> in
               let copiedState = ProductsState(initialState)
               copiedState.fetchAction = .fetchSuccessful
               copiedState.products = products
-              return copiedState
-            }
+              return Observable.just(copiedState)
+          }
         }
     }
 
@@ -62,7 +62,51 @@ class ProductsModel {
         }
     }
 
-    return Observable.merge(lifecycleStates, restoredStates, categoryFilterStates)
+    let subCategoryFilterStates = states
+      .flatMapLatest { state in
+        intentions.filterBySubCategory()
+          .flatMapLatest { subCategoryKey in
+            localRepository
+              .filterProductsBy(categoryId,
+                                state.subCategoryId,
+                                subCategoryKey,
+                                state.orderBy)
+              .flatMapLatest { fetchEvent -> Observable<ProductsState> in
+                let copiedState = ProductsState(state)
+                copiedState.fetchAction = .fetchSuccessful
+                copiedState.childCategoryId = subCategoryKey
+                copiedState.products = fetchEvent.result ?? []
+                return Observable.just(copiedState)
+            }
+
+        }
+    }
+
+    let rankFilterStates = states
+      .flatMapLatest { state in
+        intentions.orderByRank()
+          .flatMapLatest { rank in
+            localRepository
+              .filterProductsBy(categoryId,
+                                state.subCategoryId,
+                                state.childCategoryId,
+                                rank)
+              .flatMapLatest { fetchEvent -> Observable<ProductsState> in
+                let copiedState = ProductsState(state)
+                copiedState.fetchAction = .fetchSuccessful
+                copiedState.orderBy = rank
+                copiedState.products = fetchEvent.result ?? []
+                return Observable.just(copiedState)
+            }
+        }
+    }
+
+    return Observable
+      .merge(lifecycleStates,
+             restoredStates,
+             categoryFilterStates,
+             subCategoryFilterStates,
+             rankFilterStates)
   }
 
   private static func getInitialState(_ categoryId: Int, _ repository: LocalRepository) -> Observable<ProductsState> {

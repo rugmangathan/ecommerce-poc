@@ -9,10 +9,10 @@
 import Foundation
 
 enum Rank: String, Decodable {
-  case all
+  case all = "All"
   case view =  "Most Viewed Products"
-  case order = "Most OrdeRed Products"
-  case share = "Most ShaRed Products"
+  case order = "Most Ordered Products"
+  case share = "Most Shared Products"
 }
 
 class Ranking: Decodable {
@@ -32,7 +32,7 @@ class Ranking: Decodable {
   convenience required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: CodingKeys.self)
     let rankingString = try values.decode(String.self, forKey: .ranking)
-    guard let ranking = Rank(rawValue: rankingString) else {
+    guard let ranking = Rank(rawValue: rankingString.capitalized) else {
       fatalError("Found invalid value for ranking: \(rankingString)")
     }
     let products = try values.decode([LocalRank].self, forKey: .products)

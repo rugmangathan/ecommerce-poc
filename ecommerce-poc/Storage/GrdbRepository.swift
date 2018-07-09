@@ -36,21 +36,37 @@ extension GrdbRepository: LocalRepository {
     return categoryDao.getSubCategories(subCategoryId)
   }
 
-  func getProduts(_ categoryId: Int)-> Observable<[Product]> {
-    return productDao.getProducts(with: categoryId)
+  func getProduts(_ categoryId: Int, orderBy: String)-> Observable<[Product]> {
+    return productDao.getProducts(with: categoryId, orderBy: getRankColumn(for: orderBy))
   }
 
   func filterProductsBy(_ category: Int, _ subCategory: Int, _ childCategory: Int, _ orderBy: String) -> Observable<FetchEvent<[Product]>> {
+
     return productDao
       .fillterProductsBy(
         category,
         subCategory: subCategory,
         childCategory: childCategory,
-        orderBy: Rank(rawValue: orderBy)!
+        orderBy: getRankColumn(for: orderBy)
       )
       .map { FetchEvent(fetchAction: .inFlight, result: $0) }
       .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.background))
       .observeOn(MainScheduler.instance)
       .asObservable()
+  }
+
+  private func getRankColumn(for orderBy: String) -> String? {
+    var rankColumn: String?
+
+    switch Rank(rawValue: orderBy)! {
+    case .view:
+      rankColumn = LocalRank.Column.viewCount
+    case .order:
+      rankColumn = LocalRank.Column.orderCount
+    case .share:
+      rankColumn = LocalRank.Column.shares
+    default: break
+    }
+    return rankColumn
   }
 }

@@ -10,7 +10,7 @@ import RxSwift
 
 protocol LocalRepository {
   func getCategories() -> Observable<[LocalCategory]>
-  func getProduts(_ categoryId: Int)-> Observable<[Product]>
+  func getProduts(_ categoryId: Int, orderBy: String)-> Observable<[Product]>
   func getSubCategories(for categoryId: Int) -> Observable<[LocalCategory]>
   func getChildCategories(for categories: Int) -> Observable<[LocalCategory]>
   func getChildCategories(with subCategoryId: Int) -> Observable<[LocalCategory]>

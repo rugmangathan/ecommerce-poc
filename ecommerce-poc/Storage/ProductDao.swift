@@ -49,8 +49,8 @@ class ProductDao {
       .asObservable()
   }
 
-  func getProducts( with categoryId: Int) -> Observable<[Product]> {
-    let request = Product.filter(categoryId: categoryId)
+  func getProducts( with categoryId: Int, orderBy: String?) -> Observable<[Product]> {
+    let request = Product.filter(categoryId: categoryId, orderBy)
     return request
       .rx
       .fetchAll(in: dbQueue)
@@ -60,17 +60,18 @@ class ProductDao {
   func fillterProductsBy(_ categoryId: Int,
                          subCategory: Int,
                          childCategory: Int,
-                         orderBy: Rank) -> Observable<[Product]> {
+                         orderBy: String?) -> Observable<[Product]> {
     if subCategory == 0 && childCategory == 0{
-      return getProducts(with: categoryId)
+      return getProducts(with: categoryId, orderBy: orderBy)
     } else if childCategory == 0 {
-      let request = Product.filter(subCategoryId: subCategory)
+      let request = Product.filter(subCategoryId: subCategory, orderBy)
+
       return request
         .rx
         .fetchAll(in: dbQueue)
         .asObservable()
     } else {
-      let request = Product.filter(Column(Product.Column.categoryId) == childCategory)
+      let request = Product.filter(childCategoryId: childCategory, orderBy)
       return request
         .rx
         .fetchAll(in: dbQueue)
@@ -100,15 +101,33 @@ class ProductDao {
 }
 
 extension Product {
-  static func filter(categoryId: Int) -> SQLRequest<Product> {
+  static func filter(categoryId: Int, _ rankColumn: String?) -> SQLRequest<Product> {
+    var query = "SELECT product.id,  product.category_id, product.name, product.tax_name, product.tax_value FROM product, rank WHERE rank.id = product.id AND product.category_id IN (SELECT c1.id FROM category c1 WHERE c1.parent IN (SELECT c2.id FROM category c2 WHERE c2.parent == ?))"
+    if let rankColumn = rankColumn {
+      query += " ORDER BY \(rankColumn) DESC"
+    }
     return SQLRequest<Product>(
-      "SELECT * FROM product WHERE product.category_id IN (SELECT c1.id FROM category c1 WHERE c1.parent IN (SELECT c2.id FROM category c2 WHERE c2.parent == ?))",
+      query,
       arguments: [categoryId])
   }
 
-  static func filter(subCategoryId: Int) -> SQLRequest<Product> {
+  static func filter(subCategoryId: Int, _ rankColumn: String?) -> SQLRequest<Product> {
+    var query = "SELECT product.id,  product.category_id, product.name, product.tax_name, product.tax_value FROM product, rank WHERE rank.id = product.id AND product.category_id IN (SELECT c1.id FROM category c1 WHERE c1.parent = ?)"
+    if let rankColumn = rankColumn {
+      query += " ORDER BY \(rankColumn) DESC"
+    }
     return SQLRequest<Product>(
-      "SELECT * FROM product WHERE product.category_id IN (SELECT c1.id FROM category c1 WHERE c1.parent = ?)",
+      query,
       arguments: [subCategoryId])
+  }
+
+  static func filter(childCategoryId: Int, _ rankColumn: String?) -> SQLRequest<Product> {
+    var query = "SELECT p.id, p.category_id, p.name, p.tax_name, p.tax_value FROM product p, rank WHERE p.category_id = ? AND rank.id = p.id"
+    if let rankColumn = rankColumn {
+      query += " ORDER BY \(rankColumn) DESC"
+    }
+    return SQLRequest<Product>(
+      query,
+      arguments: [childCategoryId])
   }
 }
