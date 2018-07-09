@@ -53,7 +53,8 @@ class ProductDetailViewController: MviController<ProductDetailState>, UITableVie
   }()
 
   override func bind(states: Observable<ProductDetailState>) -> Observable<ProductDetailState> {
-    return ProductDetailModel.bind(intentions, lifecycle.asObservable(), product.id, repository)
+    return ProductDetailModel
+      .bind(intentions, lifecycle.asObservable(), product.id, repository)
   }
 
   override func preBind() {
@@ -89,7 +90,7 @@ class ProductDetailViewController: MviController<ProductDetailState>, UITableVie
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 107.0
+    return 73.0
   }
 }
 
@@ -106,6 +107,10 @@ extension ProductDetailViewController: ProductDetailView {
   }
 
   func showFetchFailedMesssage() {
-
+    let alertView = UIAlertController(title: "Error",
+                                      message: "No variants found",
+                                      preferredStyle: .alert)
+    alertView.addAction(UIAlertAction(title: "Ok", style: .default))
+    present(alertView, animated: true)
   }
 }
