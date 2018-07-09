@@ -10,7 +10,7 @@ import McPicker
 import RxSwift
 import RxCocoa
 
-class ProductsViewController: MviController<ProductsState>, UITableViewDataSource, UITextViewDelegate {
+class ProductsViewController: MviController<ProductsState>, UITableViewDataSource, UITableViewDelegate {
   @IBOutlet weak var categoryButton: UIButton!
   @IBOutlet weak var subCategoryButton: UIButton!
   @IBOutlet weak var orderByButton: UIButton!
@@ -34,6 +34,7 @@ class ProductsViewController: MviController<ProductsState>, UITableViewDataSourc
   private let orderByRelay = PublishRelay<String>()
   private var subCategories: SubCategoriesDictionary = SubCategoriesDictionary()
   private var categories: CategoriesDictionary = CategoriesDictionary()
+
   private lazy var repository: LocalRepository = {
     return GrdbRepository(CategoryDao(dbQueue))
   }()
@@ -99,7 +100,7 @@ class ProductsViewController: MviController<ProductsState>, UITableViewDataSourc
       .map { $0.name }
 
     displayNames.insert(allCategory, at: 0)
-    animateAndShowCategoris(displayNames)
+    animateAndShowCategories(displayNames)
   }
 
   @objc private func subCategoriesTap() {
@@ -132,7 +133,7 @@ class ProductsViewController: MviController<ProductsState>, UITableViewDataSourc
     }
   }
 
-  private func animateAndShowCategoris(_ displayNames: [String]) {
+  private func animateAndShowCategories(_ displayNames: [String]) {
     let selectedIndex: Int = displayNames.index(of: categoryButton.title(for: .normal)!.capitalized)!
     createPickerWith([displayNames], selectedIndex)
       .show { selections in
@@ -199,6 +200,15 @@ class ProductsViewController: MviController<ProductsState>, UITableViewDataSourc
     let cell = tableView.dequeueReusableCell(withIdentifier: "ProductsCell", for: indexPath)
     cell.textLabel?.text = products[indexPath.row].name
     return cell
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let productDetailView = storyboard?
+      .instantiateViewController(withIdentifier: "ProductDetailViewController")
+      as! ProductDetailViewController
+    productDetailView.product = products[indexPath.row]
+
+    navigationController?.pushViewController(productDetailView, animated: true)
   }
 }
 

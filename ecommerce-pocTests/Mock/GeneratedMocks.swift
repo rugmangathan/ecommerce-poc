@@ -295,6 +295,78 @@ class MockLocalRepository: LocalRepository, Cuckoo.ProtocolMock {
         
     }
     
+    // ["name": "getProduts", "returnSignature": " -> Observable<[Product]>", "fullyQualifiedName": "getProduts(_: Int, orderBy: String) -> Observable<[Product]>", "parameterSignature": "_ categoryId: Int, orderBy: String", "parameterSignatureWithoutNames": "categoryId: Int, orderBy: String", "inputTypes": "Int, String", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "categoryId, orderBy", "call": "categoryId, orderBy: orderBy", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "categoryId", type: "Int", range: CountableRange(267..<284), nameRange: CountableRange(0..<0)), CuckooGeneratorFramework.MethodParameter(label: Optional("orderBy"), name: "orderBy", type: "String", range: CountableRange(286..<301), nameRange: CountableRange(286..<293))], "returnType": "Observable<[Product]>", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubFunction"]
+     func getProduts(_ categoryId: Int, orderBy: String)  -> Observable<[Product]> {
+        
+            return cuckoo_manager.call("getProduts(_: Int, orderBy: String) -> Observable<[Product]>",
+                parameters: (categoryId, orderBy),
+                superclassCall:
+                    
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    )
+        
+    }
+    
+    // ["name": "getSubCategories", "returnSignature": " -> Observable<[LocalCategory]>", "fullyQualifiedName": "getSubCategories(for: Int) -> Observable<[LocalCategory]>", "parameterSignature": "for categoryId: Int", "parameterSignatureWithoutNames": "categoryId: Int", "inputTypes": "Int", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "categoryId", "call": "for: categoryId", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "categoryId", type: "Int", range: CountableRange(351..<370), nameRange: CountableRange(351..<354))], "returnType": "Observable<[LocalCategory]>", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubFunction"]
+     func getSubCategories(for categoryId: Int)  -> Observable<[LocalCategory]> {
+        
+            return cuckoo_manager.call("getSubCategories(for: Int) -> Observable<[LocalCategory]>",
+                parameters: (categoryId),
+                superclassCall:
+                    
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    )
+        
+    }
+    
+    // ["name": "getChildCategories", "returnSignature": " -> Observable<[LocalCategory]>", "fullyQualifiedName": "getChildCategories(for: Int) -> Observable<[LocalCategory]>", "parameterSignature": "for categories: Int", "parameterSignatureWithoutNames": "categories: Int", "inputTypes": "Int", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "categories", "call": "for: categories", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "categories", type: "Int", range: CountableRange(429..<448), nameRange: CountableRange(429..<432))], "returnType": "Observable<[LocalCategory]>", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubFunction"]
+     func getChildCategories(for categories: Int)  -> Observable<[LocalCategory]> {
+        
+            return cuckoo_manager.call("getChildCategories(for: Int) -> Observable<[LocalCategory]>",
+                parameters: (categories),
+                superclassCall:
+                    
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    )
+        
+    }
+    
+    // ["name": "getChildCategories", "returnSignature": " -> Observable<[LocalCategory]>", "fullyQualifiedName": "getChildCategories(with: Int) -> Observable<[LocalCategory]>", "parameterSignature": "with subCategoryId: Int", "parameterSignatureWithoutNames": "subCategoryId: Int", "inputTypes": "Int", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "subCategoryId", "call": "with: subCategoryId", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("with"), name: "subCategoryId", type: "Int", range: CountableRange(507..<530), nameRange: CountableRange(507..<511))], "returnType": "Observable<[LocalCategory]>", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubFunction"]
+     func getChildCategories(with subCategoryId: Int)  -> Observable<[LocalCategory]> {
+        
+            return cuckoo_manager.call("getChildCategories(with: Int) -> Observable<[LocalCategory]>",
+                parameters: (subCategoryId),
+                superclassCall:
+                    
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    )
+        
+    }
+    
+    // ["name": "filterProductsBy", "returnSignature": " -> Observable<FetchEvent<[Product]>>", "fullyQualifiedName": "filterProductsBy(_: Int, _: Int, _: Int, _: String) -> Observable<FetchEvent<[Product]>>", "parameterSignature": "_ category: Int, _ subCategory: Int, _ childCategory: Int, _ orderBy: String", "parameterSignatureWithoutNames": "category: Int, subCategory: Int, childCategory: Int, orderBy: String", "inputTypes": "Int, Int, Int, String", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "category, subCategory, childCategory, orderBy", "call": "category, subCategory, childCategory, orderBy", "parameters": [CuckooGeneratorFramework.MethodParameter(label: nil, name: "category", type: "Int", range: CountableRange(587..<602), nameRange: CountableRange(0..<0)), CuckooGeneratorFramework.MethodParameter(label: nil, name: "subCategory", type: "Int", range: CountableRange(604..<622), nameRange: CountableRange(0..<0)), CuckooGeneratorFramework.MethodParameter(label: nil, name: "childCategory", type: "Int", range: CountableRange(624..<644), nameRange: CountableRange(0..<0)), CuckooGeneratorFramework.MethodParameter(label: nil, name: "orderBy", type: "String", range: CountableRange(646..<663), nameRange: CountableRange(0..<0))], "returnType": "Observable<FetchEvent<[Product]>>", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubFunction"]
+     func filterProductsBy(_ category: Int, _ subCategory: Int, _ childCategory: Int, _ orderBy: String)  -> Observable<FetchEvent<[Product]>> {
+        
+            return cuckoo_manager.call("filterProductsBy(_: Int, _: Int, _: Int, _: String) -> Observable<FetchEvent<[Product]>>",
+                parameters: (category, subCategory, childCategory, orderBy),
+                superclassCall:
+                    
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    )
+        
+    }
+    
+    // ["name": "getVariants", "returnSignature": " -> Observable<[Variant]>", "fullyQualifiedName": "getVariants(for: Int) -> Observable<[Variant]>", "parameterSignature": "for productId: Int", "parameterSignatureWithoutNames": "productId: Int", "inputTypes": "Int", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "productId", "call": "for: productId", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("for"), name: "productId", type: "Int", range: CountableRange(721..<739), nameRange: CountableRange(721..<724))], "returnType": "Observable<[Variant]>", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubFunction"]
+     func getVariants(for productId: Int)  -> Observable<[Variant]> {
+        
+            return cuckoo_manager.call("getVariants(for: Int) -> Observable<[Variant]>",
+                parameters: (productId),
+                superclassCall:
+                    
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    )
+        
+    }
+    
 
 	struct __StubbingProxy_LocalRepository: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
@@ -307,6 +379,36 @@ class MockLocalRepository: LocalRepository, Cuckoo.ProtocolMock {
 	    func getCategories() -> Cuckoo.ProtocolStubFunction<(), Observable<[LocalCategory]>> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockLocalRepository.self, method: "getCategories() -> Observable<[LocalCategory]>", parameterMatchers: matchers))
+	    }
+	    
+	    func getProduts<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ categoryId: M1, orderBy: M2) -> Cuckoo.ProtocolStubFunction<(Int, String), Observable<[Product]>> where M1.MatchedType == Int, M2.MatchedType == String {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int, String)>] = [wrap(matchable: categoryId) { $0.0 }, wrap(matchable: orderBy) { $0.1 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockLocalRepository.self, method: "getProduts(_: Int, orderBy: String) -> Observable<[Product]>", parameterMatchers: matchers))
+	    }
+	    
+	    func getSubCategories<M1: Cuckoo.Matchable>(for categoryId: M1) -> Cuckoo.ProtocolStubFunction<(Int), Observable<[LocalCategory]>> where M1.MatchedType == Int {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int)>] = [wrap(matchable: categoryId) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockLocalRepository.self, method: "getSubCategories(for: Int) -> Observable<[LocalCategory]>", parameterMatchers: matchers))
+	    }
+	    
+	    func getChildCategories<M1: Cuckoo.Matchable>(for categories: M1) -> Cuckoo.ProtocolStubFunction<(Int), Observable<[LocalCategory]>> where M1.MatchedType == Int {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int)>] = [wrap(matchable: categories) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockLocalRepository.self, method: "getChildCategories(for: Int) -> Observable<[LocalCategory]>", parameterMatchers: matchers))
+	    }
+	    
+	    func getChildCategories<M1: Cuckoo.Matchable>(with subCategoryId: M1) -> Cuckoo.ProtocolStubFunction<(Int), Observable<[LocalCategory]>> where M1.MatchedType == Int {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int)>] = [wrap(matchable: subCategoryId) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockLocalRepository.self, method: "getChildCategories(with: Int) -> Observable<[LocalCategory]>", parameterMatchers: matchers))
+	    }
+	    
+	    func filterProductsBy<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.Matchable>(_ category: M1, _ subCategory: M2, _ childCategory: M3, _ orderBy: M4) -> Cuckoo.ProtocolStubFunction<(Int, Int, Int, String), Observable<FetchEvent<[Product]>>> where M1.MatchedType == Int, M2.MatchedType == Int, M3.MatchedType == Int, M4.MatchedType == String {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int, Int, Int, String)>] = [wrap(matchable: category) { $0.0 }, wrap(matchable: subCategory) { $0.1 }, wrap(matchable: childCategory) { $0.2 }, wrap(matchable: orderBy) { $0.3 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockLocalRepository.self, method: "filterProductsBy(_: Int, _: Int, _: Int, _: String) -> Observable<FetchEvent<[Product]>>", parameterMatchers: matchers))
+	    }
+	    
+	    func getVariants<M1: Cuckoo.Matchable>(for productId: M1) -> Cuckoo.ProtocolStubFunction<(Int), Observable<[Variant]>> where M1.MatchedType == Int {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int)>] = [wrap(matchable: productId) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockLocalRepository.self, method: "getVariants(for: Int) -> Observable<[Variant]>", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -331,6 +433,42 @@ class MockLocalRepository: LocalRepository, Cuckoo.ProtocolMock {
 	        return cuckoo_manager.verify("getCategories() -> Observable<[LocalCategory]>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
+	    @discardableResult
+	    func getProduts<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(_ categoryId: M1, orderBy: M2) -> Cuckoo.__DoNotUse<Observable<[Product]>> where M1.MatchedType == Int, M2.MatchedType == String {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int, String)>] = [wrap(matchable: categoryId) { $0.0 }, wrap(matchable: orderBy) { $0.1 }]
+	        return cuckoo_manager.verify("getProduts(_: Int, orderBy: String) -> Observable<[Product]>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func getSubCategories<M1: Cuckoo.Matchable>(for categoryId: M1) -> Cuckoo.__DoNotUse<Observable<[LocalCategory]>> where M1.MatchedType == Int {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int)>] = [wrap(matchable: categoryId) { $0 }]
+	        return cuckoo_manager.verify("getSubCategories(for: Int) -> Observable<[LocalCategory]>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func getChildCategories<M1: Cuckoo.Matchable>(for categories: M1) -> Cuckoo.__DoNotUse<Observable<[LocalCategory]>> where M1.MatchedType == Int {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int)>] = [wrap(matchable: categories) { $0 }]
+	        return cuckoo_manager.verify("getChildCategories(for: Int) -> Observable<[LocalCategory]>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func getChildCategories<M1: Cuckoo.Matchable>(with subCategoryId: M1) -> Cuckoo.__DoNotUse<Observable<[LocalCategory]>> where M1.MatchedType == Int {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int)>] = [wrap(matchable: subCategoryId) { $0 }]
+	        return cuckoo_manager.verify("getChildCategories(with: Int) -> Observable<[LocalCategory]>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func filterProductsBy<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable, M3: Cuckoo.Matchable, M4: Cuckoo.Matchable>(_ category: M1, _ subCategory: M2, _ childCategory: M3, _ orderBy: M4) -> Cuckoo.__DoNotUse<Observable<FetchEvent<[Product]>>> where M1.MatchedType == Int, M2.MatchedType == Int, M3.MatchedType == Int, M4.MatchedType == String {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int, Int, Int, String)>] = [wrap(matchable: category) { $0.0 }, wrap(matchable: subCategory) { $0.1 }, wrap(matchable: childCategory) { $0.2 }, wrap(matchable: orderBy) { $0.3 }]
+	        return cuckoo_manager.verify("filterProductsBy(_: Int, _: Int, _: Int, _: String) -> Observable<FetchEvent<[Product]>>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func getVariants<M1: Cuckoo.Matchable>(for productId: M1) -> Cuckoo.__DoNotUse<Observable<[Variant]>> where M1.MatchedType == Int {
+	        let matchers: [Cuckoo.ParameterMatcher<(Int)>] = [wrap(matchable: productId) { $0 }]
+	        return cuckoo_manager.verify("getVariants(for: Int) -> Observable<[Variant]>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
 	}
 
 }
@@ -343,6 +481,30 @@ class MockLocalRepository: LocalRepository, Cuckoo.ProtocolMock {
     
      func getCategories()  -> Observable<[LocalCategory]> {
         return DefaultValueRegistry.defaultValue(for: Observable<[LocalCategory]>.self)
+    }
+    
+     func getProduts(_ categoryId: Int, orderBy: String)  -> Observable<[Product]> {
+        return DefaultValueRegistry.defaultValue(for: Observable<[Product]>.self)
+    }
+    
+     func getSubCategories(for categoryId: Int)  -> Observable<[LocalCategory]> {
+        return DefaultValueRegistry.defaultValue(for: Observable<[LocalCategory]>.self)
+    }
+    
+     func getChildCategories(for categories: Int)  -> Observable<[LocalCategory]> {
+        return DefaultValueRegistry.defaultValue(for: Observable<[LocalCategory]>.self)
+    }
+    
+     func getChildCategories(with subCategoryId: Int)  -> Observable<[LocalCategory]> {
+        return DefaultValueRegistry.defaultValue(for: Observable<[LocalCategory]>.self)
+    }
+    
+     func filterProductsBy(_ category: Int, _ subCategory: Int, _ childCategory: Int, _ orderBy: String)  -> Observable<FetchEvent<[Product]>> {
+        return DefaultValueRegistry.defaultValue(for: Observable<FetchEvent<[Product]>>.self)
+    }
+    
+     func getVariants(for productId: Int)  -> Observable<[Variant]> {
+        return DefaultValueRegistry.defaultValue(for: Observable<[Variant]>.self)
     }
     
 }

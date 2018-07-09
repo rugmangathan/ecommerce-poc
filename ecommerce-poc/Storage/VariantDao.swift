@@ -50,7 +50,7 @@ class VariantDao {
   }
 
   func getVariants(with productId: Int) -> Observable<[Variant]> {
-    let request = Variant.filter(Column(Variant.Column.id) == productId)
+    let request = Variant.filter(Column(Variant.Column.productId) == productId)
     return request
       .rx
       .fetchAll(in: dbQueue)

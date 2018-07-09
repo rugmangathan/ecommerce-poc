@@ -14,6 +14,10 @@ class GrdbRepository {
     return ProductDao(dbQueue)
   }()
 
+  private lazy var variantDao: VariantDao = {
+    return VariantDao(dbQueue)
+  }()
+
   init(_ categoryDao: CategoryDao) {
     self.categoryDao = categoryDao
   }
@@ -53,6 +57,10 @@ extension GrdbRepository: LocalRepository {
       .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.background))
       .observeOn(MainScheduler.instance)
       .asObservable()
+  }
+
+  func getVariants(for productId: Int) -> Observable<[Variant]> {
+    return variantDao.getVariants(with: productId)
   }
 
   private func getRankColumn(for orderBy: String) -> String? {

@@ -15,4 +15,5 @@ protocol LocalRepository {
   func getChildCategories(for categories: Int) -> Observable<[LocalCategory]>
   func getChildCategories(with subCategoryId: Int) -> Observable<[LocalCategory]>
   func filterProductsBy(_ category: Int, _ subCategory: Int, _ childCategory: Int, _ orderBy: String) -> Observable<FetchEvent<[Product]>>
+  func getVariants(for productId: Int) -> Observable<[Variant]>
 }
