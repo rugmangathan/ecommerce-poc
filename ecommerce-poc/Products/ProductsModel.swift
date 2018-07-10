@@ -42,19 +42,18 @@ class ProductsModel {
                             state.childCategoryId,
                             state.orderBy)
           .flatMapLatest { fetchEvent -> Observable<ProductsState> in
-              let copiedState = ProductsState(state)
-              copiedState.fetchAction = .fetchSuccessful
-              copiedState.products = fetchEvent.result ?? []
-              return Observable.just(copiedState)
-          }
+            let copiedState = ProductsState(state)
+            copiedState.fetchAction = .fetchSuccessful
+            copiedState.products = fetchEvent.result ?? []
+            return Observable.just(copiedState)
+        }
     }
 
     let categoryFilterStates = states
       .flatMapLatest { state in
         intentions.filterByCategory()
-          .flatMapLatest { categoryKey in
-            localRepository
-              .getChildCategories(with: categoryKey)
+          .flatMapLatest { categoryKey -> Observable<ProductsState> in
+            return self.getChildCategories(categoryId, categoryKey: categoryKey, repository: localRepository)
               .flatMapLatest { childCategories in
                 self.fetchProducts(categoryId,
                                    subCategoryKey: categoryKey,
@@ -62,7 +61,6 @@ class ProductsModel {
                                    state: state,
                                    repository: localRepository)
             }
-
         }
     }
 
@@ -111,6 +109,16 @@ class ProductsModel {
              categoryFilterStates,
              subCategoryFilterStates,
              rankFilterStates)
+  }
+
+  private class func getChildCategories(_ categoryId: Int, categoryKey: Int, repository: LocalRepository) -> Observable<[LocalCategory]> {
+    if categoryKey == 0 {
+      return repository
+        .getChildCategories(for: categoryId)
+    } else {
+      return repository
+        .getChildCategories(with: categoryKey)
+    }
   }
 
   private static func getInitialState(_ categoryId: Int, _ repository: LocalRepository) -> Observable<ProductsState> {

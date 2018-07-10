@@ -61,7 +61,7 @@ class ProductDao {
                          subCategory: Int,
                          childCategory: Int,
                          orderBy: String?) -> Observable<[Product]> {
-    if subCategory == 0 && childCategory == 0{
+    if subCategory == 0 && childCategory == 0 {
       return getProducts(with: categoryId, orderBy: orderBy)
     } else if childCategory == 0 {
       let request = Product.filter(subCategoryId: subCategory, orderBy)

@@ -225,6 +225,7 @@ extension ProductsViewController: ProductsView {
     }
     categoriesDictionary[0] = LocalCategory(0, "All", nil)
     subCategories = categoriesDictionary
+    print(subCategoryButton.title(for: .normal))
     if !subCategories.values.contains(where: { $0.name == subCategoryButton.title(for: .normal)! }) {
       subCategoryButton.setTitle(allCategory, for: .normal)
     }
@@ -235,7 +236,7 @@ extension ProductsViewController: ProductsView {
   }
 
   func setSelectedChildCategory(_ categoryId: Int) {
-    subCategoryButton.setTitle(subCategories[categoryId]?.name.capitalized, for: .normal)
+    subCategoryButton.setTitle(subCategories[categoryId]?.name.capitalized ?? allCategory, for: .normal)
   }
 
   func setOrderBy(_ rank: String) {
