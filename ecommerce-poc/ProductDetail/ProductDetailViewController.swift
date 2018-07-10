@@ -14,6 +14,9 @@ class ProductDetailCell: UITableViewCell {
   @IBOutlet weak var colorLabel: UILabel!
   @IBOutlet weak var sizeLabel: UILabel!
   @IBOutlet weak var priceLabel: UILabel!
+  @IBOutlet weak var taxValueLabel: UILabel!
+  @IBOutlet weak var taxNameLabel: UILabel!
+  @IBOutlet weak var totalCostLabel: UILabel!
   @IBOutlet weak var sizeStackView: UIStackView!
   
 }
@@ -75,22 +78,35 @@ class ProductDetailViewController: MviController<ProductDetailState>, UITableVie
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ProductDetailCell", for: indexPath) as! ProductDetailCell
-    cell.colorLabel.text = variants[indexPath.row].color
-    if let validSize = variants[indexPath.row].size {
+    let cell = tableView
+      .dequeueReusableCell(withIdentifier: "ProductDetailCell", for: indexPath)
+      as! ProductDetailCell
+
+    let variant = variants[indexPath.row]
+    cell.colorLabel.text = variant.color
+    if let validSize = variant.size {
       cell.sizeLabel.text = "\(validSize)"
       cell.sizeStackView.isHidden = false
     } else {
       cell.sizeStackView.isHidden = true
     }
-
     cell.priceLabel.text = formatter.string(from: variants[indexPath.row].price)
+    cell.taxNameLabel.text = product.taxName
+    cell.taxValueLabel.text = "\(product.taxValue.stringValue)%"
+    cell.totalCostLabel.text = formatter.string(from: getTotalPrice(for: variant))
 
     return cell
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 73.0
+    return 84.0
+  }
+
+  private func getTotalPrice(for variant: Variant) -> NSDecimalNumber {
+    let vatAmount = variant.price
+      .multiplying(by: product.taxValue)
+      .dividing(by: NSDecimalNumber(value: 100))
+    return variant.price.adding(vatAmount)
   }
 }
 
